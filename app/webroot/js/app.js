@@ -26,10 +26,10 @@ $(function(){
 						$('#gif_input').val("");
 						toast(response.message, 3000);
 
-						$('#gif_list').prepend('<div class="item" data-w="150" data-h="200"><img src="'+model.attributes.Gif.url+'"></div>');
+						$('#gif_list').prepend('<div class="item" data-w="300" data-h="400"><img src="'+model.attributes.Gif.url+'"></div>');
 
 						$('#gif_list').flexImages({
-							rowHeight: 200
+							rowHeight: 300
 						});
 					}
 					else {
@@ -53,7 +53,7 @@ $(function(){
 	});
 
 	var GifInput = Backbone.View.extend({
-		el: $('body'),
+		el: $('#git_input_wrapper'),
 		events: {
 			'click #gif_add': 'add_gif',
 			'submit #gif_input': 'add_gif',
@@ -104,8 +104,15 @@ $(function(){
 		// mdi-hardware-keyboard-arrow-right
 		// mdi-social-share
 		
+		var menu = "<ul class='menu'>";
+		menu += "<li><a href='#0' class='mdi-action-open-with'></li>";
+		menu += "<li><a href='#0' class='mdi-social-share'></li>";
+		menu += "<li><a href='#0' class='mdi-action-favorite-outline'></li>";
+		menu += "<li><a href='#0' class='mdi-action-delete'></li>";
+		menu += "</ul>";
+		
 		giflist.each(function(gif, i) {
-			$('#gif_list').append('<div class="item" data-w="300" data-h="400"><img src="'+gif.attributes.Gif.url+'"></div>');
+			$('#gif_list').append('<div class="item" data-w="300" data-h="400"><img src="'+gif.attributes.Gif.url+'">'+menu+'</div>');
 		});
 
 		$('#gif_list').flexImages({
@@ -126,5 +133,12 @@ $(function(){
 
 	var gifinput = new GifInput({model: new Gif()});
 	var documentview = new DocumentView();
+
 	
 });
+
+$('#gif_list .item').on('click', function() {
+	console.log("TEST");
+});
+
+

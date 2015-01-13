@@ -10434,6 +10434,11 @@ ul.side-nav.fixed.right-aligned {
 /*@import "components/date_picker/default.scss";
 @import "components/date_picker/default.date.scss";
 @import "components/date_picker/default.time.scss";*/
+/* line 8, ../sass/style.scss */
+body {
+  font-size: 14px;
+}
+
 /* line 12, ../sass/style.scss */
 footer {
   margin-top: 100px;
@@ -10444,9 +10449,44 @@ footer {
 /* line 18, ../sass/style.scss */
 .flex-images {
   overflow: hidden;
+  display: table;
+  /* Allow the centering to work */
+  margin: 0 auto;
 }
-
-/* line 21, ../sass/style.scss */
+/* line 23, ../sass/style.scss */
+.flex-images .menu {
+  position: absolute;
+  padding: 0 10px 0 10px;
+  margin: 0;
+  bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: rgba(51, 51, 51, 0.8);
+  font-size: 25px;
+  display: none;
+}
+/* line 34, ../sass/style.scss */
+.flex-images .menu:active {
+  display: block;
+}
+/* line 38, ../sass/style.scss */
+.flex-images .menu li {
+  display: inline-block;
+  margin-right: 10px;
+}
+/* line 42, ../sass/style.scss */
+.flex-images .menu li:last-of-type {
+  float: right;
+}
+/* line 47, ../sass/style.scss */
+.flex-images .menu a {
+  color: white;
+}
+/* line 50, ../sass/style.scss */
+.flex-images .menu a:hover {
+  color: #ff00d4;
+}
+/* line 56, ../sass/style.scss */
 .flex-images .item {
   float: left;
   margin: 4px;
@@ -10454,11 +10494,14 @@ footer {
   box-sizing: content-box;
   overflow: hidden;
   position: relative;
-  background-color: #ddd;
+  text-align: center;
 }
-
-/* line 25, ../sass/style.scss */
+/* line 66, ../sass/style.scss */
 .flex-images .item img {
   width: auto;
   height: 100%;
+}
+/* line 71, ../sass/style.scss */
+.flex-images .item:hover .menu {
+  display: block;
 }

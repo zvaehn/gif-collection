@@ -78,7 +78,8 @@ class GifsController extends AppController {
     public function delete($id) {
         if ($this->Gif->delete($id)) {
             $message = 'Deleted';
-        } else {
+        } 
+        else {
             $message = 'Error';
         }
         $this->set(array(

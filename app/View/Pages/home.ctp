@@ -3,7 +3,7 @@
      	<?php
 		echo $this->Form->create('Gif'); 
 		?>
-    	<div class="row">
+    	<div class="row" id="git_input_wrapper">
         	<div class="input-field col s10">
         	<?php
 			echo $this->Form->input('url', array(

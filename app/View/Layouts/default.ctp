@@ -36,7 +36,7 @@
 		<nav>
 	    	<div class="nav-wrapper container">
 	    		<div class="row">
-				    <?= $this->Html->link('GIFs', '/', array('class' => 'brand-logo')) ?>
+				    <?= $this->Html->link('GIFs', '/', array('class' => 'brand-logo mdi-image-collections')) ?>
 					<ul id="nav-mobile" class="right side-nav">
 						<li><?= $this->Html->link('Signup', '/signup') ?></li>
 						<li><?= $this->Html->link('Login', '/login') ?></li>

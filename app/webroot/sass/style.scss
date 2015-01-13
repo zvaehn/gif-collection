@@ -6,7 +6,7 @@
 
 
 body {
-	
+	font-size: 14px;
 }
 
 footer {
@@ -17,9 +17,60 @@ footer {
 
 .flex-images { 
 	overflow: hidden; 
+	display: table;   /* Allow the centering to work */
+	margin: 0 auto;
+	
+	.menu {
+		position: absolute;
+		padding: 0 10px 0 10px;
+		margin: 0;
+		bottom: 0;
+		width: 100%;
+		box-sizing: border-box;
+		background-color: rgba(51, 51, 51, 0.8);
+		font-size: 25px;
+		display: none;
+
+		&:active {
+			display: block;
+		}
+
+		li {
+			display: inline-block;
+			margin-right: 10px;
+
+			&:last-of-type {
+				float: right;
+			}
+		}
+
+		a {
+			color: white;
+
+			&:hover {
+				color: #ff00d4;
+			}
+		}
+	}
+
+	.item { 
+		float: left; 
+		margin: 4px; 
+		border: 1px solid #eee; 
+		box-sizing: content-box; 
+		overflow: hidden; 
+		position: relative;  
+		//background-color: #ddd;
+		text-align: center;
+		
+		img { 
+			width: auto; height: 100%; 
+		}
+
+		&:hover {
+		 	.menu {
+				display: block;
+			}
+		}
+	}
 }
-.flex-images .item { 
-	float: left; margin: 4px; border: 1px solid #eee; box-sizing: content-box; overflow: hidden; position: relative;  
-	background-color: #ddd;
-}
-.flex-images .item img { width: auto; height: 100%; }
