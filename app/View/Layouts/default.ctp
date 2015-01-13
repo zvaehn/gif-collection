@@ -37,10 +37,28 @@
 	    	<div class="nav-wrapper container">
 	    		<div class="row">
 				    <?= $this->Html->link('GIFs', '/', array('class' => 'brand-logo mdi-image-collections')) ?>
-					<ul id="nav-mobile" class="right side-nav">
-						<li><?= $this->Html->link('Signup', '/signup') ?></li>
-						<li><?= $this->Html->link('Login', '/login') ?></li>
-				    </ul>
+
+				    <?php
+				    if(!$this->Session->check('User')) {
+				    	?>
+						<ul id="nav-mobile" class="right side-nav">
+							<li><?= $this->Html->link('Register', '/register') ?></li>
+							<li><?= $this->Html->link('Login', '/login') ?></li>
+				    	</ul>
+				    	<?php
+				    }
+				    else {
+				    	?>
+						<ul id="nav-mobile" class="right side-nav">
+							<li><?= $this->Html->link('Yo Favorites', '/') ?></li>
+							<li><?= $this->Html->link('Random', '/') ?></li>
+							<li><?= $this->Html->link('Settings', '/') ?></li>
+							<li><?= $this->Html->link('Logout', '/logout') ?></li>
+				    	</ul>
+				    	<?php
+				    }
+				    ?>
+					
 				</div>
 			</div>
 		</nav>
@@ -72,7 +90,7 @@
 		</div>
 		<div class="footer-copyright">
 			<div class="container">
-				&copy;2015 Copyright
+				Copyright &copy;2015
 				<a class="grey-text text-lighten-4 right" href="http://sven-schiffer.de" target="_blank">hi im zvaehn's page</a>
 			</div>
 		</div>

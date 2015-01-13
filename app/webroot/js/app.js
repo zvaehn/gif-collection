@@ -53,7 +53,7 @@ $(function(){
 	});
 
 	var GifInput = Backbone.View.extend({
-		el: $('#git_input_wrapper'),
+		el: $('#gif_input_wrapper'),
 		events: {
 			'click #gif_add': 'add_gif',
 			'submit #gif_input': 'add_gif',
@@ -120,21 +120,13 @@ $(function(){
 		});
 	});
 
-	/*var gifitem = new Gif({id: 1});
-	gifitem.fetch().done(function() {
-		var gifview = new GifView({ 
-			model: gifitem
-		});
-
-		gifview.render();
-
-		//console.log(gifview);
-	});*/
-
 	var gifinput = new GifInput({model: new Gif()});
 	var documentview = new DocumentView();
 
-	
+	//$('select').material_select();
+	$('.subnavigation').pushpin({ 
+		top: $('.subnavigation').offset().top,
+	});
 });
 
 $('#gif_list .item').on('click', function() {

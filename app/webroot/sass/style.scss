@@ -15,6 +15,25 @@ footer {
 	border-top: 1px solid #888;
 }
 
+.form_wrapper {
+	padding: 20px 0 20px 0;
+	margin: 20px 0 20px 0;
+}
+
+.error-message {
+	color: red;
+	margin-bottom: 15px;
+}
+
+.subnavigation {
+	z-index: 10;
+	background-color: rgba(255, 255, 255, 0.95);
+
+	> .row {
+		padding-top: 15px;
+	}
+}
+
 .flex-images { 
 	overflow: hidden; 
 	display: table;   /* Allow the centering to work */

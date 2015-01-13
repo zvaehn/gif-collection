@@ -14,17 +14,55 @@ class UsersController extends AppController {
  *
  * @var array
  */
-	public $components = array('Paginator', 'Session');
+	public $components = array(
+		'Paginator', 
+		'Session',
+		//'Security', 
+        'Email', 
+        'Cookie',
+	);
 
-/**
- * index method
- *
- * @return void
- */
-	public function index() {
-		$this->User->recursive = 0;
-		$this->set('users', $this->Paginator->paginate());
-	}
+	/*public function beforeFilter() {
+        // Kein blackhole callback (validatePost, CheckForm) bei AJAX Request
+        // blackhole callback bei POST Aufruf trotzdem vorhanden
+        // (AJAXCall leitet zu POST weiter)
+        $this->Security->csrfCheck = false;
+
+        // Welche Actions sind erlaubt?
+        $this->Auth->allow('register', 'add', 'confirm', 'login', 'lostpassword', 'newpassword', 'createsalt');
+        
+        // Autologin?
+        $cookie = $this->Cookie->read('autologin');
+
+        // Wenn ausgeloggt und Cookie gesetzt
+        if(!$this->Auth->loggedIn() && isset($cookie)) {
+            // Wenn cookie gültig
+            if(Security::hash($cookie['email'].$cookie['time']) == $cookie['hash']) {
+                $user = $this->User->find('first', array(
+                    'conditions' => array(
+                        'User.email' => $cookie['email'],
+                        'User.password' => $cookie['password']
+                    ),
+                    'recursive' => -1,
+                ));
+                // Wenn ein Benutzer gefunden wurde: Authentifizieren
+                if(count($user) > 0) {
+                    $this->Auth->login($user);
+                    $this->Auth->authenticate = $user;
+                    $this->Session->write('User', $user['User']);
+                }
+            }
+        }
+        // User setzen, falls eingeloggt
+        if($this->Auth->loggedIn()) {
+            $user = $this->Auth->user();
+            $this->set('current_user', $user);
+        } 
+        else {
+            $this->set('current_user', null);
+        }
+    }*/
+
 
 /**
  * view method
@@ -49,11 +87,17 @@ class UsersController extends AppController {
 	public function add() {
 		if ($this->request->is('post')) {
 			$this->User->create();
+
+			$this->request->data['User']['registed_at'] = date('Y-m-d G:i:s');
+
 			if ($this->User->save($this->request->data)) {
-				$this->Session->setFlash(__('The user has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('Your registration was successfull.'));
+				//return $this->redirect(array('action' => 'index'));
+			} 
+			else {
+				unset($this->request->data['User']['password']);
+				unset($this->request->data['User']['password_repeat']);
+				$this->Session->setFlash(__('Ooops...something went wrong.'));
 			}
 		}
 	}
@@ -102,4 +146,69 @@ class UsersController extends AppController {
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
+
+	// Loginfunktion 
+    public function login() {
+        // Einloggen
+        if(!empty($this->data)) {
+            // User suchen
+            $user = $this->User->findByEmailAndPassword(
+            	$this->data['User']['email'], Security::hash($this->data['User']['password'], 'sha1', true)
+            );
+            // Kein User gefunden
+            if(!$user) {
+                $this->Session->setFlash('Email or Password seems to be wrong.');
+                return;
+            }
+            // Account noch nicht bestätigt
+            /*if($user[0]['Registration']['confirmed'] == false){
+                $this->Session->setFlash('Dein Account ist noch nicht bestätigt. Bitte überprüfe Deine Mails.');
+                return;
+            }
+            // Account gesperrt
+            if($user[0]['User']['blacklisted'] == true){
+                $this->Session->setFlash('Dieser Account ist zur Zeit gesperrt. Bitte wende Dich an den Support.');
+                return;
+            }*/
+
+            // LoginSecurity-Counter löschen
+           /* if($user[0]['LoginSecurity']['try_counter'] != null) {
+                $this->Session->setFlash('Es gab '.$user[0]['LoginSecurity']['try_counter'].' fehlgeschlagene Loginversuche seit deinem letzen Login.');
+            }
+            $this->User->save(array('loginSecurity_id' => null, 'user_id' => $user[0]['User']['user_id']), $validate = false);
+            $this->User->LoginSecurity->delete($user[0]['User']['loginSecurity_id'], $cascade = false);
+*/
+            // User Authentifizieren
+            $this->Auth->login($user);
+            $this->Auth->authenticate = $user;
+
+            // Wichtige Daten in der Session speichern:
+            $this->Session->write('User', $user['User']);
+
+            // Eingeloggt bleiben?
+            if($this->data['User']['stay'] == 1) {
+                $currentTime = time();
+                $cookie = array(
+                    'email' => $user['User']['email'],
+                    'password' => $user['User']['password'],
+                    'time' => $currentTime,
+                    // Checksumme
+                    'hash' => Security::hash($user['User']['email'].$currentTime)
+                );
+                // Cookie Speichern
+                $this->Cookie->write('autologin', $cookie, true, '+1 year');
+            }
+            
+            // weiterleiten
+            $this->redirect($this->Auth->loginRedirect);
+        }
+    }
+    
+    // Logout-Funktion
+    public function logout() {
+        $this->Session->setFlash("You were logged out successfully.");
+        $this->Session->delete('User');
+        $this->Cookie->delete('autologin');
+        $this->redirect($this->Auth->logout());
+    }
 }

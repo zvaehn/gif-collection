@@ -1,4 +1,4 @@
-function toast(message, displayLength, className) {
+function toast(message, displayLength, className, completeCallback) {
     className = className || "";
     if ($('#toast-container').length == 0) {
         // create notification container
@@ -35,7 +35,11 @@ function toast(message, displayLength, className) {
                         { duration: 375,
                           easing: 'easeOutExpo',
                           queue: false,
-                          complete: function(){$(this).remove()}
+                          complete: function(){
+                            $(this).remove();
+                            if(typeof(completeCallback) === "function")
+                              completeCallback();
+                          }
                         }
                        );
         window.clearInterval(counterInterval);
@@ -44,13 +48,10 @@ function toast(message, displayLength, className) {
 
 
     
-    function createToast(message) {
-        var toast = $('<div></div>');
-        toast.addClass('toast');
-        toast.addClass(className);
-        var text = $('<span></span>');
-        text.text(message);
-        toast.append(text);
+    function createToast(html) {
+        var toast = $("<div class='toast'></div>")
+          .addClass(className)
+          .html(html);
         // Bind hammer
         toast.hammer({prevent_default:false
               }).bind('pan', function(e) {

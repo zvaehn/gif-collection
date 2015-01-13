@@ -32,8 +32,12 @@ A:HOVER { text-decoration: underline; color:#44E }
 --></style>
 </head>
 <body>
-<p>
-	<?php echo $this->Html->link($message, $url); ?>
-</p>
+
+<div class="col s12">
+	<div class="card-panel teal"> 
+		<span class="white-text"><?php echo $this->Html->link($message, $url); ?></span>
+	</div>
+</div>
+
 </body>
 </html>

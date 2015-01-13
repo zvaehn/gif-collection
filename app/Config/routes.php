@@ -23,8 +23,9 @@
 
 	Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'home'));
 
-	Router::connect('/signup', array('controller' => 'users', 'action' => 'add'));
+	Router::connect('/register', array('controller' => 'users', 'action' => 'add'));
 	Router::connect('/login', array('controller' => 'users', 'action' => 'login'));
+	Router::connect('/logout', array('controller' => 'users', 'action' => 'logout'));
 
 
 	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
