@@ -1,0 +1,38 @@
+### CakePHP ###
+/app/Config/database.php
+/app/Config/core.php
+/app/tmp
+/lib/Cake/Console/Templates/skel/tmp/
+/plugins
+/vendors
+
+
+### Linux ###
+*~
+
+
+### OSX ###
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+# Icon must ends with two \r.
+Icon
+
+# Thumbnails
+._*
+
+
+### Windows ###
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+
+### SASS ###
+*.sass-cache
