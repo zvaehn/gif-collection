@@ -30,9 +30,9 @@ class Gif extends AppModel {
 		'url' => array(
 			'url' => array(
 				'rule' => array('url'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
+				'message' => 'You must enter a valid URL.',
+				'allowEmpty' => false,
+				'required' => true,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),

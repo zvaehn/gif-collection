@@ -53,20 +53,37 @@
 	</main>
 		
 	<footer>
-      	<div class="container">
-        	<div class="row">
-          		<div class="col l6 s12">
-            		
-          		</div>
-        	</div>
-      	</div>
+		<div class="container">
+			<div class="row">
+				<div class="col l6 s12">
+					<h5 class="white-text">Footer Content</h5>
+					<p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+				</div>
+				<div class="col l4 offset-l2 s12">
+					<h5 class="white-text">Links</h5>
+					<ul>
+						<li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+						<li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+						<li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+						<li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="footer-copyright">
+			<div class="container">
+				&copy;2015 Copyright
+				<a class="grey-text text-lighten-4 right" href="http://sven-schiffer.de" target="_blank">hi im zvaehn's page</a>
+			</div>
+		</div>
 	</footer>
 
 	<?php echo $this->element('sql_dump'); ?>
 
-	<?php echo $this->Html->script('jquery.min'); ?>
-	<?php echo $this->Html->script('underscore.min'); ?>
-	<?php echo $this->Html->script('backbone.min'); ?>
+	<?php echo $this->Html->script('bin/jquery.min'); ?>
+	<?php echo $this->Html->script('bin/underscore.min'); ?>
+	<?php echo $this->Html->script('bin/backbone.min'); ?>
+	<?php echo $this->Html->script('bin/flex-images.min'); ?>
 	<?php echo $this->Html->script('materialize/bin/materialize'); ?>
 	<?php echo $this->Html->script('app'); ?>
 </body>

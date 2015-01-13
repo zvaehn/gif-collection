@@ -1,6 +1,12 @@
-$border-color: #bdbdbd !default;
-$highlight-color: color("light-blue", "base") !default;
-$label-font-size: .8rem !default;
+/* Remove Focus Boxes */
+select:focus {
+  outline: 1px solid color("materialize-red", "lighten-4");
+}
+button:focus {
+  outline: none;
+  background-color: lighten($button-color, 10%);
+}
+
 
 label {
   font-size: $label-font-size;
@@ -17,9 +23,10 @@ label {
   label {
     color: $border-color;
     position: absolute;
-    top: .8rem;
-    left: .5rem;
+    top: 0.8rem;
+    left: $gutter-width / 2;
     font-size: 1rem;
+    cursor: text;
     @include transition(.2s ease-out);
   }
   label.active {
@@ -32,17 +39,56 @@ label {
   input[type=email]:focus + label,
   input[type=date]:focus + label,
   textarea:focus + label {
-  
     color: $highlight-color;
   }
 
-  input[type=text]:valid,
-  input[type=password]:valid,
-  input[type=email]:valid,
-  input[type=date]:valid,
-  textarea:valid {
+  input[type=text].valid,
+  input[type=password].valid,
+  input[type=email].valid,
+  input[type=date].valid,
+  textarea.valid {
     border-bottom: 1px solid color("green", "base");
     @include box-shadow(0 1px 0 0 color("green", "base"));
+  }
+
+  input[type=text].invalid,
+  input[type=password].invalid,
+  input[type=email].invalid,
+  input[type=date].invalid,
+  textarea.invalid {
+    border-bottom: 1px solid color("red", "base");
+    @include box-shadow(0 1px 0 0 color("red", "base"));
+  }
+
+  // Prefix Icons
+  .prefix {
+    position: absolute;
+    width: 3rem;
+    font-size: 2rem;
+    @include transition(color .2s);
+
+    &.active { color: $highlight-color; }
+  }
+  .prefix ~ input,
+  .prefix ~ textarea {
+    margin-left: 3rem;
+    width: 92%;
+    width: calc(100% - 3rem);
+  }
+  .prefix ~ textarea { padding-top: .8rem; }
+  .prefix ~ label { margin-left: 3rem; }
+
+  @media #{$medium-and-down} {
+    .prefix ~ input {
+      width: 86%;
+      width: calc(100% - 3rem);
+    }
+  }
+  @media #{$small-and-down} {
+    .prefix ~ input {
+      width: 80%;
+      width: calc(100% - 3rem);
+    }
   }
 
 }
@@ -92,29 +138,26 @@ textarea {
 
 
 /***************
-  Radio Buttons 
+  Radio Buttons
 ***************/
 
-$disabled-color: #7c7c7c;
-$fill-color: #0f9d58;
-$radio-border: #5a5a5a;
-
-/* Remove default checkbox */
+/* Remove default Radio Buttons */
 [type="radio"]:not(:checked),
 [type="radio"]:checked {
   position: absolute;
   left: -9999px;
 }
 
-
 [type="radio"]:not(:checked) + label,
-[type="radio"]:checked + label {  
+[type="radio"]:checked + label {
   position: relative;
   padding-left: 35px;
   cursor: pointer;
   display: inline-block;
   height: 25px;
   line-height: 25px;
+  font-size: 1rem;
+  @include transition(.28s ease);
 
   -webkit-user-select: none; /* webkit (safari, chrome) browsers */
   -moz-user-select: none; /* mozilla browsers */
@@ -129,8 +172,8 @@ $radio-border: #5a5a5a;
   left: 0px;
   top: 0px;
   margin: 4px;
-  width: 12px;
-  height: 12px;
+  width: 16px;
+  height: 16px;
   z-index: 0;
   @include transition(.28s ease);
 }
@@ -145,7 +188,7 @@ $radio-border: #5a5a5a;
   border-radius: 50%;
   border: 2px solid $radio-border;
   z-index: -1;
-  
+
   @include transform(scale(0));
 }
 
@@ -162,11 +205,23 @@ $radio-border: #5a5a5a;
   @include transform(scale(1.02));
 }
 
+/* Radio With gap */
+[type="radio"].with-gap:checked + label:before {
+  border-radius: 50%;
+  border: 2px solid $fill-color;
+}
+[type="radio"].with-gap:checked + label:after {
+  border-radius: 50%;
+  border: 2px solid $fill-color;
+  background-color: $fill-color;
+  z-index: 0;
+  @include transform(scale(.5));
+}
 
 /* Disabled style */
 [type="radio"]:disabled:not(:checked) + label:before,
 [type="radio"]:disabled:checked + label:before {
-  background-color: $disabled-color;
+  background-color: transparent;
   border-color: $disabled-color;
 }
 [type="radio"]:disabled + label {
@@ -178,7 +233,7 @@ $radio-border: #5a5a5a;
 
 
 /***************
-   Checkboxes 
+   Checkboxes
 ***************/
 
 /* CUSTOM CSS CHECKBOXES */
@@ -197,13 +252,14 @@ form p {
   left: -9999px;
 }
 [type="checkbox"]:not(:checked) + label,
-[type="checkbox"]:checked + label {  
+[type="checkbox"]:checked + label {
   position: relative;
   padding-left: 35px;
   cursor: pointer;
   display: inline-block;
   height: 25px;
   line-height: 25px;
+  font-size: 1rem;
 
   -webkit-user-select: none; /* webkit (safari, chrome) browsers */
   -moz-user-select: none; /* mozilla browsers */
@@ -224,7 +280,7 @@ form p {
 /* Unchecked styles */
 [type="checkbox"]:not(:checked) + label:before {
   top: 0px;
-  width: 14px; height: 14px;
+  width: 18px; height: 18px;
   border: 2px solid $radio-border;
 }
 
@@ -232,7 +288,7 @@ form p {
 [type="checkbox"]:checked + label:before {
   left: -3px;
   top: -4px;
-  width: 8px; height: 18px;
+  width: 12px; height: 22px;
   border-top: 2px solid transparent;
   border-left: 2px solid transparent;
   border-right: 2px solid $fill-color;
@@ -240,8 +296,7 @@ form p {
   @include transform(rotateZ(40deg));
   -webkit-backface-visibility: hidden;
 
-  -webkit-transform-origin: 20% 40%;
-  transform-origin: 100% 100%;
+  @include transform-origin(100% 100%);
 }
 
 /* disabled checkbox */
@@ -251,7 +306,7 @@ form p {
   left: 0;
   box-shadow: none;
   background-color: $disabled-color;
-  width: 14px; height: 14px;
+  width: 18px; height: 18px;
   border: 2px solid $disabled-color;
   @include transform(rotateZ(0deg));
 }
@@ -265,7 +320,7 @@ form p {
 
 
 /***************
-  Select Field 
+  Select Field
 ***************/
 
 .select-wrapper span.select-dropdown {
@@ -295,11 +350,25 @@ form p {
 }
 
 select { display: none; }
-select.disabled { display: block; }
+select.browser-default { display: block; }
+
+
+// Disabled styles
+select:disabled {
+  color: rgba(0,0,0,.3);
+}
+.select-wrapper span.select-dropdown.disabled {
+  color: rgba(0,0,0,.3);
+}
+.select-dropdown li.disabled {
+  color: rgba(0,0,0,.3);
+
+  &:hover { background-color: transparent; }
+}
 
 
 /***************
-      Range 
+      Range
 ***************/
 
 .range-field {
@@ -383,10 +452,6 @@ input[type=range]::-webkit-slider-thumb {
   margin: -5px 0 0 0;
   @include transition(.3s);
 }
-.range-field.active input[type=range]::-webkit-slider-thumb {
-  height: 0;
-  width: 0;
-}
 
 input[type=range]:focus::-webkit-slider-runnable-track {
   background: #ccc;
@@ -395,7 +460,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 // FireFox
 input[type=range]{
   /* fix for FF unable to apply focus style bug  */
-  border: 1px solid white; 
+  border: 1px solid white;
 
   /*required for proper track sizing in FF*/
 }
@@ -428,10 +493,10 @@ input[type=range]:focus::-moz-range-track {
 // IE 10+
 input[type=range]::-ms-track {
   height: 3px;
-  
+
   /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
   background: transparent;
-  
+
   /*leave room for the larger thumb to overflow with a transparent border */
   border-color: transparent;
   border-width: 6px 0;

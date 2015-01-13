@@ -1,13 +1,14 @@
- <?php
- echo $this->Form->create('Gif'); 
- ?>
  <div class="row">
     <form class="col s12">
+     	<?php
+		echo $this->Form->create('Gif'); 
+		?>
     	<div class="row">
         	<div class="input-field col s10">
         	<?php
 			echo $this->Form->input('url', array(
-				'div' => false
+				'div' => false,
+				'id' => 'gif_input'
 			));
 			?>
 			</div>
@@ -18,10 +19,17 @@
 	</form>
 </div>
 
-GIFS: 
-<ul class="gif-container">
-    <script type="text/template" id="gifTemplate">
-		<p>#ID:<%= Gif.id  %></p>
-		<p>URL: <%= Gif.url %></p>
-	</script>
-</ul>
+<div class="row">
+	<!--<div class="col s12">
+		<ul id="gif_list" class="gif_list clearfix">
+		    <!--<script type="text/template" id="gifTemplate">
+				<p>#ID:<%= Gif.id  %></p>
+				<p>URL: <%= Gif.url %></p>
+			</script>
+		</ul>
+	</div>-->
+	<div id="gif_list" class="flex-images">
+		
+
+	</div>
+</div>

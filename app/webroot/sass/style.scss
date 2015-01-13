@@ -11,5 +11,15 @@ body {
 
 footer {
 	margin-top: 100px;
+	color: white;
 	border-top: 1px solid #888;
 }
+
+.flex-images { 
+	overflow: hidden; 
+}
+.flex-images .item { 
+	float: left; margin: 4px; border: 1px solid #eee; box-sizing: content-box; overflow: hidden; position: relative;  
+	background-color: #ddd;
+}
+.flex-images .item img { width: auto; height: 100%; }

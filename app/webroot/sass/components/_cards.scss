@@ -1,26 +1,40 @@
-$default-color: #00bcd4 !default; 
-$card-padding: 16px !default;
-$footer-font-color: #000 !default;
+
 
 .card-panel {
   padding: 1rem;
-  margin: 8px 0;
+  margin: $element-top-margin 0 $element-bottom-margin 0;
   @include border-radius(2px);
   @extend .z-depth-1;
+  background-color: $card-bg-color;
 }
 
 .card {
-  margin-top: 10px;
+  position: relative;
+  overflow: hidden;
+  margin: $element-top-margin 0 $element-bottom-margin 0;
+  background-color: $card-bg-color;
   @include box-sizing(border-box);
   @include border-radius(2px);
+  @extend .z-depth-1;
 
 
-  span.card-title {
+  .card-title {
     color: #fff;
     font-size: 24px;
     font-weight: 300;
+    &.activator {
+      cursor: pointer;
+    }
   }
-  @extend .z-depth-1;
+
+  a {
+    color: color("orange", "accent-2");
+    margin-right: $card-padding;
+    @include transition(color .3s ease);
+    text-transform: uppercase;
+
+    &:hover { color: lighten(color("orange", "accent-2"), 20%); }
+  }
 
 
   &.small {
@@ -57,10 +71,9 @@ $footer-font-color: #000 !default;
       top: 0;
       bottom: 0;
       width: 100%;
-      z-index: -1;
     }
 
-    span.card-title {
+    .card-title {
       position: absolute;
       bottom: 0;
       left: 0;
@@ -78,7 +91,7 @@ $footer-font-color: #000 !default;
       margin: 0;
       color: inherit;
     }
-    span.card-title {
+    .card-title {
       line-height: 48px;
     }
   }
@@ -86,16 +99,20 @@ $footer-font-color: #000 !default;
   .card-action {
     border-top: 1px solid rgba(160,160,160,.2);
     padding: $card-padding;
-
-    a {
-      color: color("orange", "accent-2");
-      margin-right: $card-padding;
-      @include transition(color .3s ease);
-      text-transform: uppercase;
-
-      &:hover { color: lighten(color("orange", "accent-2"), 20%); }
-    }
   }
 
+  .card-reveal {
+    padding: $card-padding;
+    position: absolute;
+    background-color: #FFF;
+    top: 100%;
+    height: 100%;
 
+    .card-title {
+      cursor: pointer;
+      display: block;
+    }
+
+    @include box-sizing(border-box);
+  }
 }

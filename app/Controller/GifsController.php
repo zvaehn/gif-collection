@@ -15,9 +15,10 @@ class GifsController extends AppController {
  * @var array
  */
 	public $components = array('Paginator', 'Session', 'RequestHandler');
+    public $autoRender = false;
 
     public function index() {
-        $gifs = $this->Gif->find('all');
+        $gifs = $this->Gif->find('all', array('order' => array('Gif.created_at DESC')));
         $this->layout = 'ajax';
         echo json_encode($gifs);
     }
@@ -30,16 +31,35 @@ class GifsController extends AppController {
     }
 
     public function add() {
+        $this->layout = 'ajax';
+
+        $this->request->data['Gif']['user_id'] = 1;
+        $this->request->data['Gif']['created_at'] = date('Y-m-d G:i:s');
+
         $this->Gif->create();
+
         if ($this->Gif->save($this->request->data)) {
-            $message = 'Saved';
-        } else {
-            $message = 'Error';
+            $status = 'ok';
+            $message = "Successfully created ur gif.";
+        } 
+        else {
+            $status = 'error';
+            $message = $this->Gif->validationErrors;
         }
-        $this->set(array(
+
+        echo json_encode(array(
+            'status' => $status,
+            'message' => $message,
+            'request' => array(
+                'method' => CakeRequest::method(),
+                'data' => $this->request->data,
+            ),
+            'payload' => $this->Gif->read(),
+        ));
+        /*$this->set(array(
             'message' => $message,
             '_serialize' => array('message')
-        ));
+        ));*/
     }
 
     public function edit($id) {
