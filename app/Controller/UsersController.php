@@ -144,6 +144,9 @@ class UsersController extends AppController {
 
 	// Loginfunktion 
     public function login() {
+        if($this->Auth->loggedIn()) {
+            return $this->redirect($this->Auth->loginRedirect);
+        }
         // Einloggen
         if(!empty($this->data)) {
             // User suchen
