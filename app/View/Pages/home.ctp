@@ -1,4 +1,7 @@
 <div class="row" style="position: relative">
+	<script id="gifTemplate" type="text/template">
+		<img src="<%= url %>">
+	</script>
     <div class="col s12">
 	    <form class="subnavigation">
 	     	<?php
@@ -25,14 +28,6 @@
 </div>
 
 <div class="row">
-	<!--<div class="col s12">
-		<ul id="gif_list" class="gif_list clearfix">
-		    <!--<script type="text/template" id="gifTemplate">
-				<p>#ID:<%= Gif.id  %></p>
-				<p>URL: <%= Gif.url %></p>
-			</script>
-		</ul>
-	</div>-->
 	<div id="gif_list" class="flex-images">
 		
 
