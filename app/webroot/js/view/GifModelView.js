@@ -14,13 +14,9 @@ app.GifModelView = Backbone.View.extend({
 		'data-h': '400',
 		//'data-gif_id': this.model.attributes.Gif.gif_id
 	},
-<<<<<<< HEAD
 
 	template: $('#gifTemplate').html(),  		
-=======
-	template: $('#gifTemplate').html(),  	
->>>>>>> adb0e446aa7166108cf2a461f611eba1d33182a8
-	
+
 	events: {
 		'click .clipboard-button': 'copy_to_clipboard',
 		'click .favorite': 'toggle_favorite',
