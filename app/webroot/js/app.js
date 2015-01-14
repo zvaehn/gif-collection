@@ -7,3 +7,18 @@ this.collection.fetch().done(function(){
 	new app.GifCollectionView({collection: self.collection});
 });
 	 
+
+$(".button-collapse").sideNav();
+
+/*
+var client = new ZeroClipboard($(".clipboard-button"));
+
+client.on("ready", function(readyEvent) {
+  client.on("aftercopy", function( event ) {
+    // `this` === `client`
+    // `event.target` === the element that was clicked
+    event.target.style.display = "none";
+    alert("Copied text to clipboard: " + event.data["text/plain"]);
+  });
+});
+*/

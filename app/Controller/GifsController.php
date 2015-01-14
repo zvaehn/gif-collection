@@ -81,14 +81,25 @@ class GifsController extends AppController {
 
     public function delete($id) {
         if ($this->Gif->delete($id)) {
-            $message = 'Deleted';
+            $status = 'ok';
+            $message = 'Successfully deleted ur gif.';
         } 
         else {
-            $message = 'Error';
+            $status = 'error';
+            $message = 'Unable to delete ur gif.';
         }
-        $this->set(array(
+
+        echo json_encode(array(
+            'status' => $status,
+            'message' => $message,
+            'request' => array(
+                'method' => CakeRequest::method(),
+                'data' => $this->request->data,
+            ),
+        ));
+        /*$this->set(array(
             'message' => $message,
             '_serialize' => array('message')
-        ));
+        ));*/
     }
 }

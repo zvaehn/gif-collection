@@ -13,6 +13,7 @@ app.GifCollectionView = Backbone.View.extend({
 		this.collection.each(function(item){
 			self.renderModel(item);
 		});
+		
 		$('#gif_list').flexImages({
 			rowHeight: 300
 		});
