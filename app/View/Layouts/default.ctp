@@ -64,10 +64,11 @@
 		</nav>
 	</header>
 
-	<main class="container" style="padding-top: 50px;">
-		<?php echo $this->Session->flash(); ?>
-
-		<?php echo $this->fetch('content'); ?>
+	<main>
+		<div class="container">
+			<?php echo $this->Session->flash(); ?>
+			<?php echo $this->fetch('content'); ?>
+		</div>
 	</main>
 		
 	<footer>

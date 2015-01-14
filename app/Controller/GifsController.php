@@ -1,5 +1,5 @@
 <?php
-App::uses('AppController', 'Controller');
+App::uses('AppController', 'Controller', 'Session');
 /**
  * Gifs Controller
  *
@@ -17,6 +17,10 @@ class GifsController extends AppController {
 	public $components = array('Paginator', 'Session', 'RequestHandler');
     public $autoRender = false;
 
+    public function beforeFilter() {    
+        $this->Gif->user_id = $this->Session->read('User.user_id');
+    }
+
     public function index() {
         $gifs = $this->Gif->find('all', array('order' => array('Gif.created_at DESC')));
         $this->layout = 'ajax';
@@ -33,7 +37,7 @@ class GifsController extends AppController {
     public function add() {
         $this->layout = 'ajax';
 
-        $this->request->data['Gif']['user_id'] = 1;
+        $this->request->data['Gif']['user_id'] = $this->Session->read('User.user_id');
         $this->request->data['Gif']['created_at'] = date('Y-m-d G:i:s');
 
         $this->Gif->create();

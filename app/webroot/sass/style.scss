@@ -15,6 +15,26 @@ footer {
 	border-top: 1px solid #888;
 }
 
+header {
+	padding-bottom: 50px;
+}
+
+.mdi-action-favorite-outline.toggable:hover{
+	&:before {
+		content: '\e62a';
+	}
+}
+
+.mdi-action-favorite.toggable:hover{
+	&:before {
+		content: '\e62b';
+	}
+}
+
+.mdi-action-favorite.toggable {
+	//@include transition(1s);
+}
+
 .form_wrapper {
 	padding: 20px 0 20px 0;
 	margin: 20px 0 20px 0;
@@ -65,10 +85,6 @@ footer {
 
 		a {
 			color: white;
-
-			&:hover {
-				color: #ff00d4;
-			}
 		}
 	}
 

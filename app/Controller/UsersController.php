@@ -22,12 +22,7 @@ class UsersController extends AppController {
         'Cookie',
 	);
 
-	/*public function beforeFilter() {
-        // Kein blackhole callback (validatePost, CheckForm) bei AJAX Request
-        // blackhole callback bei POST Aufruf trotzdem vorhanden
-        // (AJAXCall leitet zu POST weiter)
-        $this->Security->csrfCheck = false;
-
+	public function beforeFilter() {
         // Welche Actions sind erlaubt?
         $this->Auth->allow('register', 'add', 'confirm', 'login', 'lostpassword', 'newpassword', 'createsalt');
         
@@ -61,7 +56,7 @@ class UsersController extends AppController {
         else {
             $this->set('current_user', null);
         }
-    }*/
+    }
 
 
 /**

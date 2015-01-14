@@ -21,6 +21,10 @@ class Gif extends AppModel {
  */
 	public $displayField = 'url';
 
+	public function beforeFind($query) {
+        $query['conditions'][$this->alias . '.user_id'] = $this->user_id;
+        return $query;
+    }
 /**
  * Validation rules
  *
@@ -40,11 +44,6 @@ class Gif extends AppModel {
 		'created_at' => array(
 			'datetime' => array(
 				'rule' => array('datetime'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
 	);
@@ -61,7 +60,7 @@ class Gif extends AppModel {
 			'className' => 'User',
 			'foreignKey' => 'user_id',
 			'conditions' => '',
-			'fields' => '',
+			'fields' => array('user_id', 'email', 'registered_at'),
 			'order' => ''
 		)
 	);

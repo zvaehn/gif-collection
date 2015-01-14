@@ -1,16 +1,28 @@
 $(function(){
 
+	var gif_attributes = { 
+		gif_id: null,
+		user_id: null,
+		url: 'invalid URL',
+		created_at: new Date()
+	};
+
 	// Backbone Models
 	var Gif = Backbone.Model.extend({
-		idAttribute: 'gif_id',
-		urlRoot: '/gifs',
+		idAttribute: 'Gif.gif_id',
+		/*url: "gifs/"+this.attributes.Gif.gif_id,
+		urlRoot: function() {
+			if (this.isNew()){
+				console.log("model is new.");
+     		 	return "";
+    		} 
+    		else {
+    			console.log("model isnt new.");
+      			return "/gifs/" + this.Gif.gif_id;
+    		}
+		},*/
     	defaults: {
-			Gif: {
-				gif_id: null,
-				user_id: null,
-				url: null,
-				created_at: new Date()
-			}
+			Gif: gif_attributes,
 		},
 		create: function(){
 			this.set({
@@ -65,18 +77,20 @@ $(function(){
 	});
 
 	var GifView = Backbone.View.extend({
-		//tagName: 'li',
+		tagName: 'li',
+		model: Gif,
   		//id: 'gif-wrapper',
 		//className: 'gif-container',
-		//el: "div",
-		//el: "li",
 		initialize: function() {
 			this.render();
 		},
-		template: _.template('<h3><%= Gif.url %></h3>'),
+		//template: _.template('<% _.each(collection, function(model) { %> %><div class="item" data-w="300" data-h="400"><img src="<%= model.Gif.url %>"></div> <% });'),
+		template: _.template('TEST'),
+		//template: _.template('<% _.each(collection, function(model) { %> a <% });'),
 		render: function(){
-	    	//this.$el.html(this.template('<img src="'+this.model.get('Gif').url+'">'));
-	    	this.$el.html(this.template(this.model.toJSON()));
+	    	this.$el.html(this.template('_TEST'));
+	    	//console.log(this.model.toJSON());
+	    	//this.$el.html(this.template({collection: this.collection.toJSON()}));
 	    	return this;
 	  	},
 	});
@@ -85,34 +99,30 @@ $(function(){
 	var GifList = Backbone.Collection.extend({
 		//model: Gif
   		url: '/gifs',
+  		/*template: _.template('<% _.each(collection, function(model) { %> %><div class="item" data-w="300" data-h="400"><img src="<%= model.Gif.url %>"></div> <% })'),
+		render: function(){
+	    	//this.$el.html(this.template('<img src="'+this.model.get('Gif').url+'">'));
+	    	//console.log(this.model.toJSON());
+	    	this.$el.html(this.template(this.model.toJSON()));
+	    	return this;
+	  	}*/
 	});
 
 
 	// Application 
 	var giflist = new GifList();
-	giflist.fetch().done(function() {
-
-		// mdi-action-open-with or mdi-image-crop-free or mdi-navigation-fullscreen
-		// 			mdi-navigation-fullscreen-exit
-		// mdi-action-get-app
-		// mdi-action-delete
-		// mdi-action-favorite
-		// mdi-action-favorite-outline
-		// mdi-av-play-arrow
-		// mdi-av-pause
-		// mdi-hardware-keyboard-arrow-left
-		// mdi-hardware-keyboard-arrow-right
-		// mdi-social-share
-		
+	giflist.fetch().done(function() {		
 		var menu = "<ul class='menu'>";
 		menu += "<li><a href='#0' class='mdi-action-open-with'></li>";
 		menu += "<li><a href='#0' class='mdi-social-share'></li>";
-		menu += "<li><a href='#0' class='mdi-action-favorite-outline'></li>";
+		menu += "<li><a href='#0' class='mdi-action-favorite-outline toggable'></li>";
 		menu += "<li><a href='#0' class='mdi-action-delete'></li>";
 		menu += "</ul>";
-		
+
 		giflist.each(function(gif, i) {
-			$('#gif_list').append('<div class="item" data-w="300" data-h="400"><img src="'+gif.attributes.Gif.url+'">'+menu+'</div>');
+			//$('#gif_list').append('<div class="item" data-w="300" data-h="400" data-gif_id="'+gif.attributes.Gif.gif_id+'"><img src="'+gif.attributes.Gif.url+'">'+menu+'</div>');
+			$('#gif_list').append(gif.el);
+			console.log(gif.el);
 		});
 
 		$('#gif_list').flexImages({
@@ -122,11 +132,16 @@ $(function(){
 
 	var gifinput = new GifInput({model: new Gif()});
 	var documentview = new DocumentView();
+	
+	var mygif = new Gif({Gif: {gif_id: 3}});
+
+	console.log(mygif);
+
 
 	//$('select').material_select();
-	$('.subnavigation').pushpin({ 
+	/*$('.subnavigation').pushpin({ 
 		top: $('.subnavigation').offset().top,
-	});
+	});*/
 });
 
 $('#gif_list .item').on('click', function() {
