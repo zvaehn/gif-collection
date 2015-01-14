@@ -1,0 +1,2 @@
+- Start your MySQL-Server
+- Execute the create-script located in `/database/`
