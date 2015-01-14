@@ -1,14 +1,24 @@
 var app = app || {};
 
 app.GifModelView = Backbone.View.extend({
-		tagName: 'li',
-		template: $('#gifTemplate').html(),  		
+	tagName: 'div',
+	attributes: {
+		class: 'item', 
+		'data-w': '300', 
+		'data-h': '400',
+		//'data-gif_id': this.model.attributes.Gif.gif_id
+	},
+	template: $('#gifTemplate').html(),  		
+	
+	initialize: function() {
 		
-		initialize: function() {
-		},
-		render: function(){
-			var tmpl = _.template(this.template);
-			this.$el.html(tmpl(this.model.attributes.Gif))
-	    	return this;
-	  	},
-	});
+	},
+	events: function() {
+		
+	},
+	render: function(){
+		var tmpl = _.template(this.template);
+		this.$el.html(tmpl(this.model.attributes.Gif));
+    	return this;
+  	},
+});

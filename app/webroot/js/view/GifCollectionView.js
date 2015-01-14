@@ -12,7 +12,10 @@ app.GifCollectionView = Backbone.View.extend({
 		var self = this;
 		this.collection.each(function(item){
 			self.renderModel(item);
-		})
+		});
+		$('#gif_list').flexImages({
+			rowHeight: 300
+		});
 	},
 
 	renderModel: function(item) {
@@ -20,4 +23,4 @@ app.GifCollectionView = Backbone.View.extend({
 		this.$el.append(this.View.render().el);
 	}
 
-})
+});

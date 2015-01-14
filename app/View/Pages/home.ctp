@@ -1,8 +1,6 @@
 <div class="row" style="position: relative">
 	<script id="gifTemplate" type="text/template">
-	<div class="item" data-w="300" data-h="400" data-gif_id="<%= gif_id %>'">
 		<img src="<%= url %>">
-	</div>
 	</script>
     <div class="col s12">
 	    <form class="subnavigation">
@@ -30,11 +28,6 @@
 </div>
 
 <div class="row">
-	<div class="col s12">
-		<ul id="gif_list" class="gif_list clearfix">
-		    
-		</ul>
-	</div>
 	<div id="gif_list" class="flex-images">
 		
 
