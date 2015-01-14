@@ -8,7 +8,7 @@ app.GifModelView = Backbone.View.extend({
 		'data-h': '400',
 		//'data-gif_id': this.model.attributes.Gif.gif_id
 	},
-	template: $('#gifTemplate').html(),  		
+	template: $('#gifTemplate').html(),  	
 	
 	initialize: function() {
 		
@@ -21,4 +21,6 @@ app.GifModelView = Backbone.View.extend({
 		this.$el.html(tmpl(this.model.attributes.Gif));
     	return this;
   	},
+
+
 });

@@ -87,6 +87,7 @@
 
 	<?php echo $this->Html->script('model/GifModel'); ?>
 	<?php echo $this->Html->script('collection/GifCollection'); ?>
+	<?php echo $this->Html->script('view/DocumentView'); ?>
 	<?php echo $this->Html->script('view/GifCollectionView'); ?>
 	<?php echo $this->Html->script('view/GifModelView'); ?>
 	
