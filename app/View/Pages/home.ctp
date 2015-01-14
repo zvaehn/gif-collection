@@ -1,4 +1,9 @@
 <div class="row" style="position: relative">
+	<script id="gifTemplate" type="text/template">
+	<div class="item" data-w="300" data-h="400" data-gif_id="<%= gif_id %>'">
+		<img src="<%= url %>">
+	</div>
+	</script>
     <div class="col s12">
 	    <form class="subnavigation">
 	     	<?php
@@ -25,14 +30,11 @@
 </div>
 
 <div class="row">
-	<!--<div class="col s12">
+	<div class="col s12">
 		<ul id="gif_list" class="gif_list clearfix">
-		    <!--<script type="text/template" id="gifTemplate">
-				<p>#ID:<%= Gif.id  %></p>
-				<p>URL: <%= Gif.url %></p>
-			</script>
+		    
 		</ul>
-	</div>-->
+	</div>
 	<div id="gif_list" class="flex-images">
 		
 
