@@ -6,7 +6,8 @@ this.collection = new app.GifCollection();
 this.collection.fetch().done(function(){
 	new app.GifCollectionView({collection: self.collection});
 });
-	 
+
+new app.DocumentView({collection: self.collection});	 
 
 $(".button-collapse").sideNav();
 
@@ -22,3 +23,5 @@ client.on("ready", function(readyEvent) {
   });
 });
 */
+
+
