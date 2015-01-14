@@ -61,7 +61,6 @@ header {
 	
 	.menu {
 		position: absolute;
-		padding: 0 10px 0 10px;
 		margin: 0;
 		bottom: 0;
 		width: 100%;
@@ -76,15 +75,18 @@ header {
 
 		li {
 			display: inline-block;
-			margin-right: 10px;
-
-			&:last-of-type {
-				float: right;
-			}
+			width: 25%;
 		}
 
-		a {
+		button {
+			display: inline-block;
+			background-color: transparent;
 			color: white;
+			border: none;
+
+			&:hover {
+				color: #2196F3;
+			}
 		}
 	}
 

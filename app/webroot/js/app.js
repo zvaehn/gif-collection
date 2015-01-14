@@ -22,8 +22,12 @@ $(function(){
       			return "/gifs/" + this.Gif.gif_id;
     		}
 		},*/
+
     	defaults: {
 			Gif: gif_attributes,
+		},
+		copy_to_clipboard: function() {
+			toast("copied to clipboard", 3000);
 		},
 		create: function(){
 			this.set({
@@ -78,7 +82,7 @@ $(function(){
 	});
 
 	var GifView = Backbone.View.extend({
-		tagName: 'li',
+		//tagName: 'li',
 		model: Gif,
   		//id: 'gif-wrapper',
 		//className: 'gif-container',
@@ -88,6 +92,13 @@ $(function(){
 		//template: _.template('<% _.each(collection, function(model) { %> %><div class="item" data-w="300" data-h="400"><img src="<%= model.Gif.url %>"></div> <% });'),
 		template: _.template('TEST'),
 		//template: _.template('<% _.each(collection, function(model) { %> a <% });'),
+		events: {
+			'click .mdi-social-share': 'copy_to_clipboard',
+		},
+		copy_to_clipboard: function(e) {
+			console.log("i was here");
+			this.model.copy_to_clipboard();
+		},
 		render: function(){
 	    	this.$el.html(this.template('_TEST'));
 	    	//console.log(this.model.toJSON());
@@ -114,10 +125,10 @@ $(function(){
 	var giflist = new GifList();
 	giflist.fetch().done(function() {		
 		var menu = "<ul class='menu'>";
-		menu += "<li><a href='#0' class='mdi-action-open-with'></li>";
-		menu += "<li><a href='#0' class='mdi-social-share'></li>";
-		menu += "<li><a href='#0' class='mdi-action-favorite-outline toggable'></li>";
-		menu += "<li><a href='#0' class='mdi-action-delete'></li>";
+		menu += "<li><button class='mdi-file-attachment clipboard-button tooltipped' data-position='bottom' data-tooltip='I am tooltip' data-clipboard-text='TEST'></button></li>";
+		menu += "<li><button class='mdi-image-crop-free'></button></li>";
+		menu += "<li><button class='mdi-action-favorite-outline toggable'></button></li>";
+		menu += "<li><button class='mdi-action-delete'></button></li>";
 		menu += "</ul>";
 
 		giflist.each(function(gif, i) {
@@ -145,8 +156,20 @@ $(function(){
 	});*/
 });
 
-$('#gif_list .item').on('click', function() {
-	console.log("TEST");
+
+//$('.tooltipped').tooltip({"delay": 50});
+
+var client = new ZeroClipboard($(".clipboard-button"));
+
+$(".button-collapse").sideNav();
+
+client.on("ready", function(readyEvent) {
+  client.on("aftercopy", function( event ) {
+    // `this` === `client`
+    // `event.target` === the element that was clicked
+    event.target.style.display = "none";
+    alert("Copied text to clipboard: " + event.data["text/plain"]);
+  });
 });
 
 
