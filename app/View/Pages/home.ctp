@@ -1,6 +1,24 @@
 <div class="row" style="position: relative">
 	<script id="gifTemplate" type="text/template">
 		<img src="<%= url %>">
+		<ul class='menu'>
+			<li>
+				<button class='mdi-file-attachment clipboard-button tooltipped' 
+					data-position='bottom' 
+					data-tooltip='I am tooltip' 
+					data-clipboard-text='TEST'>
+				</button>
+			</li>
+			<li>
+				<button class='mdi-image-crop-free'></button>
+			</li>
+			<li>
+				<button class='mdi-action-favorite-outline toggable'></button>
+			</li>
+			<li>
+				<button class='mdi-action-delete'></button>
+			</li>
+		</ul>;
 	</script>
     <div class="col s12">
 	    <form class="subnavigation">
