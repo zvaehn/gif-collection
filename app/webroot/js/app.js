@@ -10,6 +10,7 @@ $(function(){
 	// Backbone Models
 	var Gif = Backbone.Model.extend({
 		idAttribute: 'Gif.gif_id',
+		url: 'gifs',
 		/*url: "gifs/"+this.attributes.Gif.gif_id,
 		urlRoot: function() {
 			if (this.isNew()){
@@ -120,8 +121,8 @@ $(function(){
 		menu += "</ul>";
 
 		giflist.each(function(gif, i) {
-			//$('#gif_list').append('<div class="item" data-w="300" data-h="400" data-gif_id="'+gif.attributes.Gif.gif_id+'"><img src="'+gif.attributes.Gif.url+'">'+menu+'</div>');
-			$('#gif_list').append(gif.el);
+			$('#gif_list').append('<div class="item" data-w="300" data-h="400" data-gif_id="'+gif.attributes.Gif.gif_id+'"><img src="'+gif.attributes.Gif.url+'">'+menu+'</div>');
+			//$('#gif_list').append(gif.el);
 			console.log(gif.el);
 		});
 

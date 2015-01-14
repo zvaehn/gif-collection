@@ -209,4 +209,11 @@ class UsersController extends AppController {
         $this->Cookie->delete('autologin');
         $this->redirect($this->Auth->logout());
     }
+
+    // Just a development function
+    public function createsalt($pw) {
+        if(Configure::read('debug') > 0) {
+            $this->Session->setFlash(Security::hash($pw, 'sha1', true));
+        }
+    }
 }
