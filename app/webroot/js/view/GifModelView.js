@@ -28,15 +28,22 @@ app.GifModelView = Backbone.View.extend({
 	},
 
 	delete: function() {
-		this.model.delete();
+		//erstellt automatisch ein delete request auf /gifs/gif_id
+		this.model.destroy();
+		//die model view muss noch vom dom gelöscht werde
+		//glaube mit this.remove();
 	},
 
 	toggle_favorite: function() {
-		console.log("test");
+		this.model.set({isFavorites: true})
+		// erstellt automatisch ein put request auf /gifs/gif_id
+		this.model.save();
 	},
 	
 	create: function(){
-		this.model.create();
+		//this.model.set({Gif{gif_url: inputValue}})
+		//erstellt automatisch einen post request auf /gifs
+		//this.model.save();
 	}, 
 
 	render: function(){
