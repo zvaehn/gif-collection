@@ -89,6 +89,8 @@ class GifsController extends AppController {
             $message = 'Unable to delete ur gif.';
         }
 
+        $this->log("Something did not work!", 'debug');
+
         echo json_encode(array(
             'status' => $status,
             'message' => $message,

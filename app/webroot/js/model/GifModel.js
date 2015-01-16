@@ -44,7 +44,6 @@ app.GifModel = Backbone.Model.extend({
 
 		this.destroy({
 			success: function(model, response) {
-				console.log("success");
 				console.log(response);
 			},
 			error: function(model, response) {
@@ -57,5 +56,5 @@ app.GifModel = Backbone.Model.extend({
 		// ToDo
 	},
 
-	idAttribute: 'gif_id'
+	idAttribute: 'Gif.gif_id'
 });

@@ -29,6 +29,8 @@ app.GifModelView = Backbone.View.extend({
 
 	delete: function() {
 		//erstellt automatisch ein delete request auf /gifs/gif_id
+		console.log("deleting...");
+		console.log(this.model);
 		this.model.destroy();
 		//die model view muss noch vom dom gelöscht werde
 		//glaube mit this.remove();
