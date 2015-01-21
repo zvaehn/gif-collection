@@ -19,6 +19,7 @@
 			</li>
 		</ul>
 	</script>
+
     <div class="col s12">
 	    	<div class="row" id="gif_input_wrapper">
 	        	<div class="input-field col s10">
@@ -29,7 +30,7 @@
 				</div>
 				<div class="input-field col s2">
 					<a class="btn-floating waves-effect waves-light gif_add" id="gif_add"><i class="mdi-content-add"></i></a>
-					<a class="btn-floating waves-effect waves-light gif_add" id="gif_search"><i class="mdi-action-search"></i></a>
+					<a class="btn-floating waves-effect waves-light gif_search" id="gif_search"><i class="mdi-action-search"></i></a>
 				</div>
 			</div>
 	</div>

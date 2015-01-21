@@ -3,7 +3,7 @@ $(function(){
 	var gif_attributes = { 
 		gif_id: null,
 		user_id: null,
-		url: 'invalid URL',
+		url: null,
 		created_at: new Date()
 	};
 
@@ -26,9 +26,11 @@ $(function(){
     	defaults: {
 			Gif: gif_attributes,
 		},
+
 		copy_to_clipboard: function() {
 			toast("copied to clipboard", 3000);
 		},
+
 		create: function(){
 			this.set({
 				Gif: {
@@ -71,10 +73,12 @@ $(function(){
 
 	var GifInput = Backbone.View.extend({
 		el: $('#gif_input_wrapper'),
+
 		events: {
 			'click #gif_add': 'add_gif',
 			'submit #gif_input': 'add_gif',
 		},
+		
 		add_gif: function(e) {
 			e.preventDefault();
 			this.model.create();
