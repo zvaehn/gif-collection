@@ -27,7 +27,7 @@ app.GifModelView = Backbone.View.extend({
 	initialize: function() {
 		
 	},
-
+	
 	copyToClipboard: function(){
 		//this.model.set({isFavorite: true});
 		//this.model.save();
