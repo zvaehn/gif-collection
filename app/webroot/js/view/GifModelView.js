@@ -15,36 +15,33 @@ app.GifModelView = Backbone.View.extend({
 		//'data-gif_id': this.model.attributes.Gif.gif_id
 	},
 
-	template: $('#gifTemplate').html(),  		
-
+	template: $('#gifTemplate').html(),  	
+	
 	events: {
-		'click .clipboard-button': 'copy_to_clipboard',
-		'click .favorite': 'toggle_favorite',
-		'click .delete': 'delete',
+		'click .clipboard-button': 'copyToClipboard',
+		'click .favorite': 'toggleFavorites',
+		'click .delete': 'deleteModel',
+
 	},
 
-	copy_to_clipboard: function() {
-		this.model.copy_to_clipboard();
+	initialize: function() {
+		
 	},
 
-	delete: function() {
-		//erstellt automatisch ein delete request auf /gifs/gif_id
-		this.model.destroy();
-		//die model view muss noch vom dom gelöscht werde
-		//glaube mit this.remove();
+	copyToClipboard: function(){
+		//this.model.set({isFavorite: true});
+		//this.model.save();
 	},
 
-	toggle_favorite: function() {
-		this.model.set({isFavorites: true})
-		// erstellt automatisch ein put request auf /gifs/gif_id
+	toogleFavorites: function(){
+		this.model.set({isFavorite: true});
 		this.model.save();
 	},
-	
-	create: function(){
-		//this.model.set({Gif{gif_url: inputValue}})
-		//erstellt automatisch einen post request auf /gifs
-		//this.model.save();
-	}, 
+
+	deleteModel: function() {
+		this.model.destroy();
+		this.remove();
+	},
 
 	render: function(){
 		var tmpl = _.template(this.template);
