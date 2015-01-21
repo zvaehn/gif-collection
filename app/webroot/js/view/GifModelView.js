@@ -50,8 +50,7 @@ app.GifModelView = Backbone.View.extend({
 				console.log("success callback");
 				self.model.attributes.Gif.is_favorite = !self.model.attributes.Gif.is_favorite;
 				self.$el.html(_.template(self.template)(self.model.attributes.Gif));
-				
-				
+				toast("Successfully updated your gif.", 3000);
 			},
 			error: function(model, response, options) {
 				console.log("error callback");
