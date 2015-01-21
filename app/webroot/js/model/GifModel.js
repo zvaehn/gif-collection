@@ -8,7 +8,8 @@ app.GifModel = Backbone.Model.extend({
 	},
 
 	initialize: function() {
-    	this.set({'id': this.get('Gif').gif_id})
+    	this.set({'id': this.get('Gif').gif_id});
+    	this.attributes.Gif.is_favorite = false;
     },
 	
 });
