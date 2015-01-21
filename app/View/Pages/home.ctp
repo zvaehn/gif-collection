@@ -12,7 +12,11 @@
 				<button class='mdi-image-crop-free'></button>
 			</li>
 			<li>
-				<button class='mdi-action-favorite-outline favorite toggable'></button>
+				<% if (is_favorite == true) { %>
+    				<button class='mdi-action-favorite favorite toggable'></button>
+				<% } else { %>
+					<button class='mdi-action-favorite-outline favorite toggable'></button>
+				<% }  %>
 			</li>
 			<li>
 				<button class='mdi-action-delete delete'></button>

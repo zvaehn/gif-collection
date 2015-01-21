@@ -56,7 +56,36 @@ class GifsController extends AppController {
     public function edit($id) {
         $this->Gif->id = $id;
 
-        
+        // Toggles a Gif's favorite status
+        if($this->request->data['action'] == "favorite") {
+            // Check if the Gif belongs to the logged in User
+            if($this->Session->read('User.user_id') == $this->Gif->user_id) {
+            
+                $is_favorite = ($this->request->data['payload']['isFavorite'] ? true : false);
+
+                if($this->Gif->saveField('is_favorite', $is_favorite)) {
+                    $status = 'ok';
+                    $message = 'Marked as favorite.';
+                }
+                else {
+                    $status = 'error';
+                    $message = 'Unable to remove from favorites.';
+                }                
+            }
+            else {
+                $status = 'error';
+                $message = 'You can only favorite your own Gifs.';
+            }
+        }
+
+        echo json_encode(array(
+            'status' => $status,
+            'message' => $message,
+            'request' => array(
+                'method' => CakeRequest::method(),
+                'data' => $this->request->data,
+            ),
+        ));
     }
 
     public function delete($id) {
