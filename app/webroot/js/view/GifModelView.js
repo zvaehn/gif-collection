@@ -21,7 +21,6 @@ app.GifModelView = Backbone.View.extend({
 		'click .clipboard-button': 'copyToClipboard',
 		'click .favorite': 'toggleFavorites',
 		'click .delete': 'deleteModel',
-
 	},
 
 	initialize: function() {
@@ -35,12 +34,18 @@ app.GifModelView = Backbone.View.extend({
 
 	toggleFavorites: function(){
 		this.model.set({action: "favorite", payload: { isFavorite: true}});
-		this.model.save(null,{
-			success:function(model, response, options){
-				console.log(response)
+		this.model.save({
+			success: function(model, response, options) {
+				console.log("success callback");
+				console.log(model);
+				console.log(response);
+				console.log(options);
 			},
-			error: function(model, response, options){
-				console.log(response)
+			error: function(model, response, options) {
+				console.log("error callback");
+				console.log(model);
+				console.log(response);
+				console.log(options);
 			}
 		});
 	},

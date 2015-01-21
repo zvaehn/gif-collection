@@ -37,6 +37,7 @@ app.GifCollectionView = Backbone.View.extend({
 			rowHeight: 300
 		});
 
+		toast("Successfully added your gif.", 3000);
 	},
 
 	renderModel: function(item) {
