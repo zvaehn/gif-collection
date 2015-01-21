@@ -54,6 +54,42 @@ header {
 	}
 }
 
+.options {
+	float: right;
+
+	li {
+		display: inline-block;
+		margin-left: 10px;
+	}
+}
+
+ul.horizontal {
+	padding: 0;
+	margin: 0;
+
+	li {
+		display: inline-block;
+		margin-right: 10px;
+	}
+
+	.spacer {
+		width: 30px;
+	}
+}
+
+.toggle_options {
+	@include transition-duration(2s);
+	@include transition-property(all);
+
+	.expanded {
+		@include transform(rotate(180deg));
+	}
+}
+
+#option_panel {
+	display: none;
+}
+
 .flex-images { 
 	overflow: hidden; 
 	display: table;   /* Allow the centering to work */

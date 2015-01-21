@@ -11388,13 +11388,65 @@ header {
 }
 
 /* line 57, ../sass/style.scss */
+.options {
+  float: right;
+}
+/* line 60, ../sass/style.scss */
+.options li {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+/* line 66, ../sass/style.scss */
+ul.horizontal {
+  padding: 0;
+  margin: 0;
+}
+/* line 70, ../sass/style.scss */
+ul.horizontal li {
+  display: inline-block;
+  margin-right: 10px;
+}
+/* line 75, ../sass/style.scss */
+ul.horizontal .spacer {
+  width: 30px;
+}
+
+/* line 80, ../sass/style.scss */
+.toggle_options {
+  -webkit-transition-duration: 2s;
+  -moz-transition-duration: 2s;
+  -o-transition-duration: 2s;
+  -ms-transition-duration: 2s;
+  transition-duration: 2s;
+  -webkit-transition-property: all;
+  -moz-transition-property: all;
+  -o-transition-property: all;
+  -ms-transition-property: all;
+  transition-property: all;
+}
+/* line 84, ../sass/style.scss */
+.toggle_options .expanded {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+/* line 89, ../sass/style.scss */
+#option_panel {
+  display: none;
+}
+
+/* line 93, ../sass/style.scss */
 .flex-images {
   overflow: hidden;
   display: table;
   /* Allow the centering to work */
   margin: 0 auto;
 }
-/* line 62, ../sass/style.scss */
+/* line 98, ../sass/style.scss */
 .flex-images .menu {
   position: absolute;
   margin: 0;
@@ -11405,27 +11457,27 @@ header {
   font-size: 25px;
   display: none;
 }
-/* line 72, ../sass/style.scss */
+/* line 108, ../sass/style.scss */
 .flex-images .menu:active {
   display: block;
 }
-/* line 76, ../sass/style.scss */
+/* line 112, ../sass/style.scss */
 .flex-images .menu li {
   display: inline-block;
   width: 20%;
 }
-/* line 81, ../sass/style.scss */
+/* line 117, ../sass/style.scss */
 .flex-images .menu button {
   display: inline-block;
   background-color: transparent;
   color: white;
   border: none;
 }
-/* line 87, ../sass/style.scss */
+/* line 123, ../sass/style.scss */
 .flex-images .menu button:hover {
   color: #2196F3;
 }
-/* line 93, ../sass/style.scss */
+/* line 129, ../sass/style.scss */
 .flex-images .item {
   float: left;
   margin: 4px;
@@ -11435,12 +11487,12 @@ header {
   position: relative;
   text-align: center;
 }
-/* line 103, ../sass/style.scss */
+/* line 139, ../sass/style.scss */
 .flex-images .item img {
   width: auto;
   height: 100%;
 }
-/* line 108, ../sass/style.scss */
+/* line 144, ../sass/style.scss */
 .flex-images .item:hover .menu {
   display: block;
 }
