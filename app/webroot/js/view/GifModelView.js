@@ -3,6 +3,7 @@ var app = app || {};
 app.GifModelView = Backbone.View.extend({
 	
 	initialize: function() {
+		var self = this;
 	},
 
 	tagName: 'div',
@@ -63,7 +64,10 @@ app.GifModelView = Backbone.View.extend({
 
 	deleteModel: function() {
 		this.model.destroy();
-		this.remove();
+		this.$el.fadeOut('slow',function(){
+			this.remove();
+		});
+		//this.remove();
 		toast("Successfully deleted your gif.", 3000);
 	},
 
