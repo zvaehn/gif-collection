@@ -57,7 +57,7 @@
 			<div class="col s12" id="option_panel">
 				<ul class="horizontal">	
 					<li>
-						<input type="checkbox" id="filter_favorites" checked>
+						<input type="checkbox" id="filter_favorites">
 						<label for="filter_favorites">Show favorites</label>
 					</li>
 					<li class="spacer"></li>

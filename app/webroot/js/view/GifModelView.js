@@ -47,17 +47,12 @@ app.GifModelView = Backbone.View.extend({
 		this.model.set({action: "favorite", payload: { isFavorite: !this.model.get('Gif').is_favorite}});
 		this.model.save(null,{
 			success: function(model, response, options) {
-				console.log("success callback");
 				self.model.attributes.Gif.is_favorite = !self.model.attributes.Gif.is_favorite;
 				self.$el.html(_.template(self.template)(self.model.attributes.Gif));
-				
-				
+				toast("Toggled favorite.", 3000);
 			},
 			error: function(model, response, options) {
-				console.log("error callback");
-				console.log(model);
-				console.log(response);
-				console.log(options);
+
 			}
 		});
 	},

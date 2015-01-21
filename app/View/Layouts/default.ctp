@@ -29,9 +29,7 @@
 					    }
 					    else {
 					    	?>
-							<li><?= $this->Html->link('Favorites', '/') ?></li>
 							<li><?= $this->Html->link('Random', '/') ?></li>
-							
 							<li><?= $this->Html->link('Logout', '/logout') ?></li>
 					    	<?php
 					    }
