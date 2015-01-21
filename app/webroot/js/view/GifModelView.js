@@ -28,12 +28,22 @@ app.GifModelView = Backbone.View.extend({
 	},
 	
 	copyToClipboard: function(){
-		//this.model.set({isFavorite: true});
-		//this.model.save();
+		var client = new ZeroClipboard( document.getElementById("copy-button") );
+
+		client.on( "ready", function( readyEvent ) {
+ 		 // alert( "ZeroClipboard SWF is ready!" );
+
+  client.on( "aftercopy", function( event ) {
+    // `this` === `client`
+    // `event.target` === the element that was clicked
+    event.target.style.display = "none";
+    alert("Copied text to clipboard: " + event.data["text/plain"] );
+  } );
+} );
 	},
 
 	toggleFavorites: function(){
-		this.model.set({action: "favorite", payload: { isFavorite: true}});
+		this.model.set({action: "favorite", payload: { isFavorite: !this.model.get('Gif').is_favorite}});
 		this.model.save(null,{
 			success: function(model, response, options) {
 				console.log("success callback");
