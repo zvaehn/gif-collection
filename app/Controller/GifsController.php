@@ -58,7 +58,7 @@ class GifsController extends AppController {
 
         // Toggles a Gif's favorite status
         if($this->request->data['action'] == "favorite") {
-            $this->Gif->is_favorite = ($this->request->data['payload']['isFavorite']) ? true : false;
+            $this->Gif->is_favorite = true; //($this->request->data['payload']['isFavorite']) ? true : false;
 
             if($this->Gif->save()) {
                 $status = 'ok';
@@ -66,7 +66,7 @@ class GifsController extends AppController {
             }
             else {
                 $status = 'error';
-                $message = 'removed from favorites.';
+                $message = 'Unable to remove from favorites.';
             }
         }
 
