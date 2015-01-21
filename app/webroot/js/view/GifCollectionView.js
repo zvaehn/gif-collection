@@ -11,9 +11,6 @@ app.GifCollectionView = Backbone.View.extend({
 		app.GlobalEventHandler.on('addModel',function(){
 			self.addModel();
 		});
-		this.listenTo(this.collection,'add', function(model){
-			model.save();
-		})
 	},
 
 	render: function(){
@@ -31,7 +28,8 @@ app.GifCollectionView = Backbone.View.extend({
 		this.undelegateEvents();
 		var url = $('#gif_input').val();
 		$('#gif_input').val('');
-		this.collection.add(new app.GifModel({Gif:{url: url}}))
+		this.collection.add(new app.GifModel({Gif:{url: url}}));
+		this.collection.last().save();
 		this.renderModel(this.collection.last());
 		$('#gif_list').flexImages({
 			rowHeight: 300
