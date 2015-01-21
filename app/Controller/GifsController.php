@@ -60,23 +60,34 @@ class GifsController extends AppController {
             ),
             'payload' => $this->Gif->read(),
         ));
-        /*$this->set(array(
-            'message' => $message,
-            '_serialize' => array('message')
-        ));*/
     }
 
     public function edit($id) {
         $this->Gif->id = $id;
+
         if ($this->Gif->save($this->request->data)) {
             $message = 'Saved';
-        } else {
+        } 
+        else {
             $message = 'Error';
         }
         $this->set(array(
             'message' => $message,
             '_serialize' => array('message')
         ));
+    }
+
+    public function favorite($id) {
+        //isFavorite = true
+        $this->Gif->id = $id;
+        $this->Gif->is_favorite = ($this->request->data['isFavorite']) ? true : false;
+
+        if($this->Gif->save()) {
+            echo "ok";
+        }
+        else {
+            echo "error";
+        }
     }
 
     public function delete($id) {
@@ -99,9 +110,5 @@ class GifsController extends AppController {
                 'data' => $this->request->data,
             ),
         ));
-        /*$this->set(array(
-            'message' => $message,
-            '_serialize' => array('message')
-        ));*/
     }
 }
