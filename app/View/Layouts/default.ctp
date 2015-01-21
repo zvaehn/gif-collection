@@ -29,9 +29,9 @@
 					    }
 					    else {
 					    	?>
-							<li><?= $this->Html->link('Yo Favorites', '/') ?></li>
+							<li><?= $this->Html->link('Favorites', '/') ?></li>
 							<li><?= $this->Html->link('Random', '/') ?></li>
-							<li><?= $this->Html->link('Settings', '/') ?></li>
+							
 							<li><?= $this->Html->link('Logout', '/logout') ?></li>
 					    	<?php
 					    }
@@ -54,16 +54,20 @@
 		<div class="container">
 			<div class="row">
 				<div class="col l6 s12">
-					<h5 class="white-text">Footer Content</h5>
-					<p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-				</div>
-				<div class="col l4 offset-l2 s12">
 					<h5 class="white-text">Links</h5>
 					<ul>
-						<li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-						<li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-						<li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-						<li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+						<li><a class="white-text text-lighten-3" href="#0">Github Repository</a></li>
+						<li><a class="white-text text-lighten-3" href="#0">Documentation</a></li>
+						<li><a class="white-text text-lighten-3" href="#0">Demo-Page</a></li>
+					</ul>
+				</div>
+				<div class="col l4 offset-l2 s12">
+					<h5 class="white-text">Contributors</h5>
+					<ul>
+						<li class="white-text text-lighten-3">Timon Blask</li>
+						<li class="white-text text-lighten-3">Niklas Rose</li>
+						<li class="white-text text-lighten-3">Sven Schiffer</li>
+						<li class="white-text text-lighten-3">Patrizia Schink</li>
 					</ul>
 				</div>
 			</div>
@@ -71,7 +75,7 @@
 		<div class="footer-copyright">
 			<div class="container">
 				Copyright &copy;2015
-				<a class="grey-text text-lighten-4 right" href="http://sven-schiffer.de" target="_blank">hi im zvaehn's page</a>
+				<span class="white-text text-lighten-4 right">FH-Köln - WPF: Moderne Webanwendungen</span>
 			</div>
 		</div>
 	</footer>

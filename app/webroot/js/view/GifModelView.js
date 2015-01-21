@@ -41,6 +41,7 @@ app.GifModelView = Backbone.View.extend({
 	deleteModel: function() {
 		this.model.destroy();
 		this.remove();
+		toast("Successfully deleted your gif.", 3000);
 	},
 
 	render: function(){
