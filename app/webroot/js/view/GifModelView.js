@@ -33,7 +33,7 @@ app.GifModelView = Backbone.View.extend({
 		//this.model.save();
 	},
 
-	toogleFavorites: function(){
+	toggleFavorites: function(){
 		this.model.set({isFavorite: true});
 		this.model.save();
 	},
