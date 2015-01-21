@@ -3,7 +3,6 @@ var app = app || {};
 app.GifModelView = Backbone.View.extend({
 	
 	initialize: function() {
-		
 	},
 
 	tagName: 'div',
@@ -43,13 +42,15 @@ app.GifModelView = Backbone.View.extend({
 	},
 
 	toggleFavorites: function(){
+		var self = this;
 		this.model.set({action: "favorite", payload: { isFavorite: !this.model.get('Gif').is_favorite}});
 		this.model.save(null,{
 			success: function(model, response, options) {
 				console.log("success callback");
-				console.log(model);
-				console.log(response);
-				console.log(options);
+				self.model.attributes.Gif.is_favorite = !self.model.attributes.Gif.is_favorite;
+				self.$el.html(_.template(self.template)(self.model.attributes.Gif));
+				
+				
 			},
 			error: function(model, response, options) {
 				console.log("error callback");
