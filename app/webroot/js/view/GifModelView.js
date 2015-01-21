@@ -34,8 +34,15 @@ app.GifModelView = Backbone.View.extend({
 	},
 
 	toggleFavorites: function(){
-		this.model.set({isFavorite: true});
-		this.model.save();
+		this.model.set({action: "favorite", payload: { isFavorite: true}});
+		this.model.save(null,{
+			success:function(model, response, options){
+				console.log(response)
+			},
+			error: function(model, response, options){
+				console.log(response)
+			}
+		});
 	},
 
 	deleteModel: function() {
