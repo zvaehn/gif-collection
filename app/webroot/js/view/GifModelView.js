@@ -34,7 +34,7 @@ app.GifModelView = Backbone.View.extend({
 
 	toggleFavorites: function(){
 		this.model.set({action: "favorite", payload: { isFavorite: true}});
-		this.model.save({
+		this.model.save(null,{
 			success: function(model, response, options) {
 				console.log("success callback");
 				console.log(model);
