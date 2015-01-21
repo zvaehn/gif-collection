@@ -84,13 +84,12 @@
 	<?php echo $this->Html->script('bin/flex-images.min'); ?>
 	<?php echo $this->Html->script('bin/ZeroClipboard.min'); ?>
 	<?php echo $this->Html->script('materialize/bin/materialize'); ?>
-
 	<?php echo $this->Html->script('model/GifModel'); ?>
 	<?php echo $this->Html->script('collection/GifCollection'); ?>
 	<?php echo $this->Html->script('view/DocumentView'); ?>
 	<?php echo $this->Html->script('view/GifCollectionView'); ?>
 	<?php echo $this->Html->script('view/GifModelView'); ?>
-	
 	<?php echo $this->Html->script('app'); ?>
+	
 </body>
 </html>

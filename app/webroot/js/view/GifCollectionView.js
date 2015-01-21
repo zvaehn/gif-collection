@@ -4,6 +4,7 @@ app.GifCollectionView = Backbone.View.extend({
 	el: $('#gif_list'),
 
 	initialize: function(options){
+		app.GlobalEventHandler = _.extend({}, Backbone.Events);
 		var self = this;
 		this.collection = options.collection;
 		this.render();
@@ -20,6 +21,7 @@ app.GifCollectionView = Backbone.View.extend({
 		this.collection.each(function(item){
 			self.renderModel(item);
 		});
+		
 		$('#gif_list').flexImages({
 			rowHeight: 300
 		});

@@ -4,21 +4,20 @@
 		<ul class='menu'>
 			<li>
 				<button class='mdi-file-attachment clipboard-button tooltipped' 
-					data-position='bottom' 
-					data-tooltip='I am tooltip' 
-					data-clipboard-text='TEST'>
-				</button>
+					data-position='bottom'
+					data-tooltip='I am tooltip'  
+					data-clipboard-text='"<%= url %>"'></button>
 			</li>
 			<li>
 				<button class='mdi-image-crop-free'></button>
 			</li>
 			<li>
-				<button class='mdi-action-favorite-outline toggable'></button>
+				<button class='mdi-action-favorite-outline favorite toggable'></button>
 			</li>
 			<li>
-				<button class='mdi-action-delete'></button>
+				<button class='mdi-action-delete delete'></button>
 			</li>
-		</ul>;
+		</ul>
 	</script>
     <div class="col s12">
 	    	<div class="row" id="gif_input_wrapper">

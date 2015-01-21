@@ -1,25 +1,39 @@
 var app = app || {};
 
 app.GifModelView = Backbone.View.extend({
+	
+	initialize: function() {
+		
+	},
+
 	tagName: 'div',
+
 	attributes: {
 		class: 'item', 
 		'data-w': '300', 
 		'data-h': '400',
 		//'data-gif_id': this.model.attributes.Gif.gif_id
 	},
+
 	template: $('#gifTemplate').html(),  	
 	
 	events: {
-		'click .mdi-action-favorite-outline': 'addToFavorites',
-		'click .mdi-action-delete': "deleteModel"
+		'click .clipboard-button': 'copyToClipboard',
+		'click .favorite': 'toggleFavorites',
+		'click .delete': 'deleteModel',
+
 	},
 
 	initialize: function() {
 		
 	},
+	
+	copyToClipboard: function(){
+		//this.model.set({isFavorite: true});
+		//this.model.save();
+	},
 
-	addToFavorites: function(){
+	toogleFavorites: function(){
 		this.model.set({isFavorite: true});
 		this.model.save();
 	},
