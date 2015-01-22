@@ -9,26 +9,15 @@ this.collection.fetch().done(function(){
 
 new app.DocumentView({collection: self.collection});	 
 
-
 $(document).ready(function(){
 	$('.parallax').parallax();
-	$('.button-collapse').sideNav();
+    $('.button-collapse').sideNav();
+
+    $('#global-zeroclipboard-html-bridge').on('mouseover', function() {
+    	$('.zeroclipboard-is-hover').parents('.menu').show();
+    });
+
+    $('#global-zeroclipboard-html-bridge').on('mouseout', function() {
+    	$('.zeroclipboard-is-hover').parents('.menu').hide();
+    });
 });
-
-
-/*
-var client = new ZeroClipboard($(".clipboard-button"));
-
-client.on("ready", function(readyEvent) {
-  client.on("aftercopy", function( event ) {
-    // `this` === `client`
-    // `event.target` === the element that was clicked
-    event.target.style.display = "none";
-    alert("Copied text to clipboard: " + event.data["text/plain"]);
-  });
-});
-*/
-
-
-
-

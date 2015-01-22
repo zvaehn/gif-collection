@@ -4,10 +4,9 @@
 			<img src="<%= url %>">
 			<ul class='menu'>
 				<li>
-					<button class='mdi-editor-insert-link clipboard-button tooltipped' 
-						data-position='bottom'
-						data-tooltip='I am tooltip'  
-						data-clipboard-text='"<%= url %>"'></button>
+					<div class='clipboard-button' id='clipboard_button_id_<%= gif_id %>' data-clipboard-text='<%= url %>'>
+						<button class='mdi-editor-insert-link clipboard-icon'></button>
+					</div>
 				</li>
 				<li>
 					<button class='mdi-image-crop-free'></button>
@@ -47,27 +46,21 @@
 							</a>
 						</li>
 					</ul>
-
-					<!--<i class="mdi-hardware-keyboard-arrow-up"></i>
-					mdi-hardware-keyboard-arrow-down
-					<i class="mdi-hardware-keyboard-arrow-down"></i>-->
-
-					<!--<a class="btn-floating waves-effect waves-light gif_search" id="gif_search"><i class="mdi-action-search"></i></a>-->
 				</div>
 
 				<div class="col s12" id="option_panel">
 					<ul class="horizontal">	
 						<li>
 							<input type="checkbox" id="filter_favorites">
-							<label for="filter_favorites">Show favorites</label>
+							<label for="filter_favorites">Only favorites</label>
 						</li>
 						<li class="spacer"></li>
 						<li>
 							<input class="with-gap" name="order-by" type="radio" id="order_by_newest" checked />
-	  						<label for="order_by_newest">Order newest</label>
+	  						<label for="order_by_newest">Newest first</label>
 
 							<input class="with-gap" name="order-by" type="radio" id="order_by_oldest" checked />
-	  						<label for="order_by_oldest">Order oldest</label>
+	  						<label for="order_by_oldest">Oldest first</label>
 	  					</li>
 					</ul>
 				</div>
@@ -124,7 +117,7 @@
 				</div>
 			</div>
 
-			<p>Loading images...</p>
+			<p><i class="mdi-action-search"> Collecting your images...</i></p>
 		</div>
 
 		<div id="gif_list" class="flex-images">

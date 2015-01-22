@@ -31,6 +31,19 @@ app.GifCollectionView = Backbone.View.extend({
 		else {
 			$('#gif_list').html('<i class="mdi-alert-warning"></i> You dont have any gifs yet.');
 		}
+
+		// every element with the .clipboard-button class becomes a zeroclipboard
+		var client = new ZeroClipboard($('.clipboard-button'));
+
+		client.on( "aftercopy", function( event ) {
+			// `this` === `client`
+			// `event.target` === the element that was clicked
+			toast('Copied to Clipboard.', 1000);
+		});
+
+		// News elements with this class will be automaticly registered as a ZeroClipboard object (hopefully)
+		client.clip($('.clipboard-button'));
+
 	},
 
 	addModel: function(){
@@ -39,7 +52,7 @@ app.GifCollectionView = Backbone.View.extend({
 		$('#gif_input').val('');
 		this.collection.add(new app.GifModel({Gif:{url: url}}));
 
-		this.collection.last().save({
+		this.collection.last().save(/*{
 			success: function(model, response, options) {
 				if(response.status == "ok") {
 					console.log(response.message);
@@ -50,8 +63,8 @@ app.GifCollectionView = Backbone.View.extend({
 			},
 			error: function(model, response, options) {
 				console.log(response);	
-			}
-		});
+			}*/
+		/*}*/);
 		this.renderModel(this.collection.last());
 
 		$('#gif_list').flexImages({

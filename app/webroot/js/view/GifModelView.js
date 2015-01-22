@@ -13,7 +13,7 @@ app.GifModelView = Backbone.View.extend({
 	template: $('#gifTemplate').html(),  	
 	
 	events: {
-		'click .clipboard-button': 'copyToClipboard',
+		//'click .clipboard-button': 'copyToClipboard', --> see copyToClipboard commentary
 		'click .favorite': 'toggleFavorites',
 		'click .delete': 'deleteModel',
 		'click .mdi-image-crop-free': 'enlargeGif',
@@ -25,20 +25,13 @@ app.GifModelView = Backbone.View.extend({
 		this.collection = options.collection;
 	},
 	
-	copyToClipboard: function(){
-		var client = new ZeroClipboard( document.getElementById("copy-button") );
-
-		client.on( "ready", function( readyEvent ) {
- 		 // alert( "ZeroClipboard SWF is ready!" );
-
-  client.on( "aftercopy", function( event ) {
-    // `this` === `client`
-    // `event.target` === the element that was clicked
-    event.target.style.display = "none";
-    alert("Copied text to clipboard: " + event.data["text/plain"] );
-  } );
-} );
-	},
+	/*
+	we dont need this function cuz the zeroclipboard has already an click event handler
+	 */
+	/*
+	copyToClipboard: function(event) {
+		var button_id = event.target.id;
+	},*/
 
 	toggleFavorites: function(){
 		var self = this;
@@ -47,21 +40,42 @@ app.GifModelView = Backbone.View.extend({
 			success: function(model, response, options) {
 				self.model.attributes.Gif.is_favorite = !self.model.attributes.Gif.is_favorite;
 				self.$el.html(_.template(self.template)(self.model.attributes.Gif));
-				toast("Toggled favorite.", 3000);
+				toast("Toggled favorite.", 1000);
 			},
 			error: function(model, response, options) {
-				toast(response.message, 3000);
+				toast(response.message, 1000);
 			}
 		});
 	},
 
 	deleteModel: function() {
-		this.model.destroy();
-		this.$el.fadeOut('slow',function(){
+		
+		/*this.$el.fadeOut('slow',function(){
 			this.remove();
-		});
+		});*/
 		//this.remove();
-		toast("Successfully deleted your gif.", 3000);
+		
+		//toast("Successfully deleted your gif.", 1000);
+
+		var collection = this;
+
+		this.$el.fadeOut('slow', 
+			toast(
+				'Gif deleted <a class="btn-flat yellow-text" id="gif_undo_delete" data-gif-id="'+collection.model.id+'" href="#">Undo<a>', 
+				5000,
+				'',
+				function() {
+					// delete action
+					collection.model.destroy();
+					collection.remove();
+				}
+			)
+		);
+	},
+
+	restoreModel: function() {
+		// add the model to the collecton
+		// display on dom again
 	},
 
 	enlargeGif: function(){

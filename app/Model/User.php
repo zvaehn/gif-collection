@@ -35,7 +35,6 @@ class User extends AppModel {
 		),
 	);
 
-
 	public $hasMany = array(
 		'Gif' => array(
 			'className' => 'Gif',
@@ -52,6 +51,7 @@ class User extends AppModel {
 		)
 	);
 
+	// Checks if the given email is already in our database
     public function isUniqueEmail($email) {
         $emails = $this->find('count', array(
             'conditions' => array(
@@ -63,11 +63,15 @@ class User extends AppModel {
         return !($emails > 0);
     }
 
+    // Checks if the passwords are matching
     public function pw_match($password_repeat) {
         return (strcmp($this->data['User']['password'], $this->data['User']['password_repeat']) == 0);
     }
 
+    // Is called whenever the save method is called
     public function beforeSave($options = array()) {
+    	// We are hashing the user password for security reasons
+    	// One does not simply save a plain text password in a database!!! http://cdn.meme.am/instances/500x/58358131.jpg
         if (isset($this->data[$this->alias]['password'])) {
             $this->data[$this->alias]['password'] = AuthComponent::password($this->data[$this->alias]['password']);
         }
