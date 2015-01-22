@@ -54,9 +54,9 @@
 				<div class="col l6 s12">
 					<h5 class="white-text">Links</h5>
 					<ul>
-						<li><a class="white-text text-lighten-3" href="#0">Github Repository</a></li>
-						<li><a class="white-text text-lighten-3" href="#0">Documentation</a></li>
-						<li><a class="white-text text-lighten-3" href="#0">Demo-Page</a></li>
+						<li><a class="white-text text-lighten-3" href="https://github.com/zvaehn/gif-collection">Github Repository</a></li>
+						<li><a class="white-text text-lighten-3" href="https://github.com/zvaehn/gif-collection/wiki/Dokumentation">Documentation</a></li>
+						<li><a class="white-text text-lighten-3" href="http://gifs.sven-schiffer.de">Demo-Page</a></li>
 					</ul>
 				</div>
 				<div class="col l4 offset-l2 s12">
