@@ -16,14 +16,21 @@ app.GifCollectionView = Backbone.View.extend({
 	render: function(){
 		$('#gif_list_preloader').fadeOut();
 
-		var self = this;
-		this.collection.each(function(item){
-			self.renderModel(item);
-		});
+		console.log(this.collection.length);
 		
-		$('#gif_list').flexImages({
-			rowHeight: 300
-		});
+		if(this.collection.length > 0) {
+			var self = this;
+			this.collection.each(function(item){
+				self.renderModel(item);
+			});
+			
+			$('#gif_list').flexImages({
+				rowHeight: 300
+			});
+		}
+		else {
+			$('#gif_list').html('<i class="mdi-alert-warning"></i> You dont have any gifs yet.');
+		}
 	},
 
 	addModel: function(){
@@ -33,6 +40,7 @@ app.GifCollectionView = Backbone.View.extend({
 		this.collection.add(new app.GifModel({Gif:{url: url}}));
 		this.collection.last().save();
 		this.renderModel(this.collection.last());
+
 		$('#gif_list').flexImages({
 			rowHeight: 300
 		});

@@ -54,8 +54,7 @@ class UsersController extends AppController {
 	public function add() {
 		if ($this->request->is('post')) {
 			$this->User->create();
-
-			$this->request->data['User']['registed_at'] = date('Y-m-d G:i:s');
+            $this->User->registed_at = date('Y-m-d G:i:s');
 
 			if ($this->User->save($this->request->data)) {
 				$this->Session->setFlash(__('Your registration was successfull.'));
