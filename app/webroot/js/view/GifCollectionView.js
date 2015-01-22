@@ -17,7 +17,7 @@ app.GifCollectionView = Backbone.View.extend({
 		$('#gif_list_preloader').fadeOut();
 
 		console.log(this.collection.length);
-		
+
 		if(this.collection.length > 0) {
 			var self = this;
 			this.collection.each(function(item){
@@ -38,7 +38,20 @@ app.GifCollectionView = Backbone.View.extend({
 		var url = $('#gif_input').val();
 		$('#gif_input').val('');
 		this.collection.add(new app.GifModel({Gif:{url: url}}));
-		this.collection.last().save();
+
+		this.collection.last().save({
+			success: function(model, response, options) {
+				if(response.status == "ok") {
+					console.log(response.message);
+				}
+				else {
+					toast('Unable to add this URL.', 3000);
+				}
+			},
+			error: function(model, response, options) {
+				console.log(response);	
+			}
+		});
 		this.renderModel(this.collection.last());
 
 		$('#gif_list').flexImages({

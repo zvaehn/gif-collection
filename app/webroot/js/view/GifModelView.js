@@ -52,7 +52,7 @@ app.GifModelView = Backbone.View.extend({
 				toast("Toggled favorite.", 3000);
 			},
 			error: function(model, response, options) {
-
+				toast(response.message, 3000);
 			}
 		});
 	},
