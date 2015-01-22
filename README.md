@@ -4,7 +4,8 @@ How to run
 - Start your MySQL-Server
 - Execute the create-script located in `/database`
 - Copy `/user/databse.php` and `/user/core.php` into `/app/config/` 
-- edit `login`, `password`, `database` in the db-config: `/app/config/database.php`
+- edit `login` and `password` in the db-config: `/app/config/database.php`
+- follow the cake warnings
 
 Additional info
 ----
