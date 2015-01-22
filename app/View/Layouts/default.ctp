@@ -4,7 +4,7 @@
 	<?php echo $this->Html->charset(); ?>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title><?php echo "GIFS > ".$this->fetch('title'); ?></title>
+	<title><?php echo ".GIF > ".$this->fetch('title'); ?></title>
 	<?php
 		echo $this->Html->meta('icon');
 		echo $this->Html->css('style.css');
@@ -18,7 +18,7 @@
 	    	<div class="nav-wrapper container">
 	    		<div class="row">
 	    			<a class="button-collapse" href="#" data-activates="nav-mobile"><i class="mdi-navigation-menu"></i></a>
-				    <?= $this->Html->link('GIFs', '/', array('class' => 'brand-logo mdi-image-collections')) ?>
+				    <?= $this->Html->link('.GIF', '/', array('class' => 'brand-logo mdi-image-collections')) ?>
 				    <ul id="nav-mobile" class="right side-nav">
 					    <?php
 					    if(!$this->Session->check('User')) {

@@ -14,6 +14,8 @@ app.GifCollectionView = Backbone.View.extend({
 	},
 
 	render: function(){
+		$('#gif_list_preloader').fadeOut();
+
 		var self = this;
 		this.collection.each(function(item){
 			self.renderModel(item);

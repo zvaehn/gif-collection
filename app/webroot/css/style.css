@@ -11338,81 +11338,81 @@ ul.side-nav.fixed.right-aligned {
     margin-bottom: 5em;
   }
 }
-/* line 8, ../sass/style.scss */
+/* line 5, ../sass/style.scss */
 body {
   font-size: 14px;
 }
 
-/* line 12, ../sass/style.scss */
+/* line 9, ../sass/style.scss */
 footer {
   margin-top: 100px;
   color: white;
   border-top: 1px solid #888;
 }
 
-/* line 18, ../sass/style.scss */
+/* line 15, ../sass/style.scss */
 header {
   padding-bottom: 50px;
 }
 
-/* line 23, ../sass/style.scss */
+/* line 20, ../sass/style.scss */
 .mdi-action-favorite-outline.toggable:hover:before {
   content: '\e62a';
 }
 
-/* line 29, ../sass/style.scss */
+/* line 26, ../sass/style.scss */
 .mdi-action-favorite.toggable:hover:before {
   content: '\e62b';
 }
 
-/* line 38, ../sass/style.scss */
+/* line 35, ../sass/style.scss */
 .form_wrapper {
   padding: 20px 0 20px 0;
   margin: 20px 0 20px 0;
 }
 
-/* line 43, ../sass/style.scss */
+/* line 40, ../sass/style.scss */
 .error-message {
   color: red;
   margin-bottom: 15px;
 }
 
-/* line 48, ../sass/style.scss */
+/* line 45, ../sass/style.scss */
 .subnavigation {
   z-index: 10;
   background-color: rgba(255, 255, 255, 0.95);
 }
-/* line 52, ../sass/style.scss */
+/* line 49, ../sass/style.scss */
 .subnavigation > .row {
   padding-top: 15px;
 }
 
-/* line 57, ../sass/style.scss */
+/* line 54, ../sass/style.scss */
 .options {
   float: right;
 }
-/* line 60, ../sass/style.scss */
+/* line 57, ../sass/style.scss */
 .options li {
   display: inline-block;
   margin-left: 10px;
 }
 
-/* line 66, ../sass/style.scss */
+/* line 63, ../sass/style.scss */
 ul.horizontal {
   padding: 0;
   margin: 0;
 }
-/* line 70, ../sass/style.scss */
+/* line 67, ../sass/style.scss */
 ul.horizontal li {
   display: inline-block;
   margin-right: 10px;
 }
-/* line 75, ../sass/style.scss */
+/* line 72, ../sass/style.scss */
 ul.horizontal .spacer {
   width: 30px;
 }
 
-/* line 80, ../sass/style.scss */
+/* line 77, ../sass/style.scss */
 .toggle_options {
   -webkit-transition-duration: 2s;
   -moz-transition-duration: 2s;
@@ -11425,7 +11425,7 @@ ul.horizontal .spacer {
   -ms-transition-property: all;
   transition-property: all;
 }
-/* line 84, ../sass/style.scss */
+/* line 81, ../sass/style.scss */
 .toggle_options .expanded {
   -webkit-transform: rotate(180deg);
   -moz-transform: rotate(180deg);
@@ -11434,19 +11434,25 @@ ul.horizontal .spacer {
   transform: rotate(180deg);
 }
 
-/* line 89, ../sass/style.scss */
+/* line 86, ../sass/style.scss */
 #option_panel {
   display: none;
 }
 
-/* line 93, ../sass/style.scss */
+/* line 90, ../sass/style.scss */
+.preloader-centered {
+  text-align: center;
+  margin: 150px 0 100px 0;
+}
+
+/* line 95, ../sass/style.scss */
 .flex-images {
   overflow: hidden;
   display: table;
   /* Allow the centering to work */
   margin: 0 auto;
 }
-/* line 98, ../sass/style.scss */
+/* line 100, ../sass/style.scss */
 .flex-images .menu {
   position: absolute;
   margin: 0;
@@ -11456,28 +11462,33 @@ ul.horizontal .spacer {
   background-color: rgba(51, 51, 51, 0.8);
   font-size: 25px;
   display: none;
+  -webkit-transition: 2s all;
+  -moz-transition: 2s all;
+  -o-transition: 2s all;
+  -ms-transition: 2s all;
+  transition: 2s all;
 }
-/* line 108, ../sass/style.scss */
+/* line 112, ../sass/style.scss */
 .flex-images .menu:active {
   display: block;
 }
-/* line 112, ../sass/style.scss */
+/* line 116, ../sass/style.scss */
 .flex-images .menu li {
   display: inline-block;
   width: 20%;
 }
-/* line 117, ../sass/style.scss */
+/* line 121, ../sass/style.scss */
 .flex-images .menu button {
   display: inline-block;
   background-color: transparent;
   color: white;
   border: none;
 }
-/* line 123, ../sass/style.scss */
+/* line 127, ../sass/style.scss */
 .flex-images .menu button:hover {
   color: #2196F3;
 }
-/* line 129, ../sass/style.scss */
+/* line 133, ../sass/style.scss */
 .flex-images .item {
   float: left;
   margin: 4px;
@@ -11487,12 +11498,12 @@ ul.horizontal .spacer {
   position: relative;
   text-align: center;
 }
-/* line 139, ../sass/style.scss */
+/* line 143, ../sass/style.scss */
 .flex-images .item img {
   width: auto;
   height: 100%;
 }
-/* line 144, ../sass/style.scss */
+/* line 148, ../sass/style.scss */
 .flex-images .item:hover .menu {
   display: block;
 }

@@ -1,9 +1,6 @@
 @import "compass/css3";
 @import "vars/_colors";
 @import "_materialize.scss";
-//@import "vars/*";
-
-
 
 body {
 	font-size: 14px;
@@ -90,6 +87,11 @@ ul.horizontal {
 	display: none;
 }
 
+.preloader-centered {
+	text-align: center;
+	margin: 150px 0 100px 0;
+}
+
 .flex-images { 
 	overflow: hidden; 
 	display: table;   /* Allow the centering to work */
@@ -104,6 +106,8 @@ ul.horizontal {
 		background-color: rgba(51, 51, 51, 0.8);
 		font-size: 25px;
 		display: none;
+
+		@include transition(2s all);
 
 		&:active {
 			display: block;
