@@ -18,7 +18,7 @@ app.GifModelView = Backbone.View.extend({
 	template: $('#gifTemplate').html(),  	
 	
 	events: {
-		'click .clipboard-button': 'copyToClipboard',
+		//'click .clipboard-button': 'copyToClipboard', --> see copyToClipboard commentary
 		'click .favorite': 'toggleFavorites',
 		'click .delete': 'deleteModel',
 	},
@@ -27,20 +27,13 @@ app.GifModelView = Backbone.View.extend({
 		
 	},
 	
-	copyToClipboard: function(){
-		var client = new ZeroClipboard( document.getElementById("copy-button") );
-
-		client.on( "ready", function( readyEvent ) {
- 		 // alert( "ZeroClipboard SWF is ready!" );
-
-  client.on( "aftercopy", function( event ) {
-    // `this` === `client`
-    // `event.target` === the element that was clicked
-    event.target.style.display = "none";
-    alert("Copied text to clipboard: " + event.data["text/plain"] );
-  } );
-} );
-	},
+	/*
+	we dont need this function cuz the zeroclipboard has already an click event handler
+	 */
+	/*
+	copyToClipboard: function(event) {
+		var button_id = event.target.id;
+	},*/
 
 	toggleFavorites: function(){
 		var self = this;

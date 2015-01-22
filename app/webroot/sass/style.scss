@@ -25,7 +25,7 @@ footer {
 }
 
 .mdi-action-favorite.toggable {
-	//@include transition(1s);
+	@include transition(0.3s all);
 }
 
 .form_wrapper {
@@ -111,6 +111,10 @@ ul.horizontal {
 	margin-bottom: 25px;
 }
 
+.clipboard-button {
+	cursor: pointer;
+}
+
 .flex-images { 
 	overflow: hidden; 
 	display: table;   /* Allow the centering to work */
@@ -126,11 +130,7 @@ ul.horizontal {
 		font-size: 25px;
 		display: none;
 
-		@include transition(2s all);
-
-		&:active {
-			display: block;
-		}
+		@include transition(0.3s all);
 
 		li {
 			display: inline-block;
@@ -155,17 +155,24 @@ ul.horizontal {
 		border: 1px solid #eee; 
 		box-sizing: content-box; 
 		overflow: hidden; 
-		position: relative;  
-		//background-color: #ddd;
+		position: relative;
 		text-align: center;
+
+		.zeroclipboard-is-hover {
+			.clipboard-icon {
+				color: #2196F3;
+			}
+		}
 		
 		img { 
-			width: auto; height: 100%; 
+			width: auto; 
+			height: 100%; 
 		}
 
 		&:hover {
 		 	.menu {
-				display: block;
+		 		@include transition(0.3s all);
+				display: block !important;
 			}
 		}
 	}

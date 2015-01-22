@@ -4,10 +4,9 @@
 			<img src="<%= url %>">
 			<ul class='menu'>
 				<li>
-					<button class='mdi-editor-insert-link clipboard-button tooltipped' 
-						data-position='bottom'
-						data-tooltip='I am tooltip'  
-						data-clipboard-text='"<%= url %>"'></button>
+					<div class='clipboard-button' id='clipboard_button_id_<%= gif_id %>' data-clipboard-text='<%= url %>'>
+						<button class='mdi-editor-insert-link clipboard-icon'></button>
+					</div>
 				</li>
 				<li>
 					<button class='mdi-image-crop-free'></button>
