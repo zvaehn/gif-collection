@@ -62,7 +62,7 @@ app.GifCollectionView = Backbone.View.extend({
 	},
 
 	renderModel: function(item) {
-		this.View = new app.GifModelView({model: item});
+		this.View = new app.GifModelView({model: item, collection: this.collection});
 		this.$el.prepend(this.View.render().el);
 	}
 

@@ -10,6 +10,7 @@ app.DocumentView = Backbone.View.extend({
 		'click #filter_favorites': 'filter_favorite',
 		'click #order_by_newest': 'order_creationdate_desc',
 		'click #order_by_oldest': 'order_creationdate_asc',
+		
 	},	
 	
 	initialize: function(options) {

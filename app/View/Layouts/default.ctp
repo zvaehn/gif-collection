@@ -13,6 +13,13 @@
 	?>
 </head>
 <body>
+<div class="blur">
+	<div class="arrow-left"></div>
+	<div class="arrow-right"></div>
+	<div class="close-lightbox"></div>
+	<div class="lightbox">
+	</div>
+</div>
 	<header>
 		<nav>
 	    	<div class="nav-wrapper container">
