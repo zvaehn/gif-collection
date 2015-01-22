@@ -36,9 +36,9 @@ class AppController extends Controller {
     	//'Security',
         'Session', 
         'Auth' => array(
-            'loginRedirect' => array('controller' => 'pages', 'action' => 'home'),
+            'loginRedirect' => array('controller' => 'pages', 'action' => 'landing'),
             'logoutRedirect' => array('controller' => 'users', 'action' => 'login'),
-            'authError' => 'Please register first.',
+            'authError' => 'You have to create an account before you can use this application.',
         ),
     );
 

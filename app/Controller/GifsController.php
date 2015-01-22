@@ -17,6 +17,10 @@ class GifsController extends AppController {
         echo json_encode($gifs);
     }
 
+    public function gallery() {
+        $this->render('gallery');
+    }
+
     /*
     public function view($id) {
         $gif = $this->Gif->findByGif_id($id);
@@ -91,11 +95,11 @@ class GifsController extends AppController {
     public function delete($id) {
         if ($this->Gif->delete($id)) {
             $status = 'ok';
-            $message = 'Successfully deleted ur gif.';
+            $message = 'Successfully deleted your gif.';
         } 
         else {
             $status = 'error';
-            $message = 'Unable to delete ur gif.';
+            $message = 'Unable to delete your gif.';
         }
 
         echo json_encode(array(

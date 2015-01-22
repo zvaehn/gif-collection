@@ -29,7 +29,6 @@
 					    }
 					    else {
 					    	?>
-							<li><?= $this->Html->link('Random', '/') ?></li>
 							<li><?= $this->Html->link('Logout', '/logout') ?></li>
 					    	<?php
 					    }
@@ -41,11 +40,12 @@
 	</header>
 
 	<main>
-		<div class="container">
+		<div class="container row flashmessage">
 			<?php echo $this->Session->flash(); ?>
-			
-			<?php echo $this->fetch('content'); ?>
 		</div>
+		
+		<?php echo $this->fetch('content'); ?>
+		
 	</main>
 		
 	<footer>

@@ -12,10 +12,6 @@ footer {
 	border-top: 1px solid #888;
 }
 
-header {
-	padding-bottom: 50px;
-}
-
 .mdi-action-favorite-outline.toggable:hover{
 	&:before {
 		content: '\e62a';
@@ -34,12 +30,28 @@ header {
 
 .form_wrapper {
 	padding: 20px 0 20px 0;
-	margin: 20px 0 20px 0;
+	margin: 15px 0 50px 0;
 }
 
 .error-message {
 	color: red;
 	margin-bottom: 15px;
+}
+
+main > .container {
+	margin-top: 50px;
+}
+
+.container.row.flashmessage {
+	margin-bottom: 0;
+	margin-top: 0;
+}
+
+.parallax-text {
+	font-size: 60px;
+	text-align: center;
+	padding: 100px 0 100px 0;
+	display: block;
 }
 
 .subnavigation {
@@ -90,6 +102,13 @@ ul.horizontal {
 .preloader-centered {
 	text-align: center;
 	margin: 150px 0 100px 0;
+}
+
+.message {
+	padding: 15px;
+	border: 1px solid #ccc;
+	margin-top: 25px;
+	margin-bottom: 25px;
 }
 
 .flex-images { 
