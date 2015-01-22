@@ -42,10 +42,10 @@ app.GifModelView = Backbone.View.extend({
 			success: function(model, response, options) {
 				self.model.attributes.Gif.is_favorite = !self.model.attributes.Gif.is_favorite;
 				self.$el.html(_.template(self.template)(self.model.attributes.Gif));
-				toast("Toggled favorite.", 3000);
+				toast("Toggled favorite.", 1000);
 			},
 			error: function(model, response, options) {
-				toast(response.message, 3000);
+				toast(response.message, 1000);
 			}
 		});
 	},
@@ -56,7 +56,10 @@ app.GifModelView = Backbone.View.extend({
 			this.remove();
 		});
 		//this.remove();
-		toast("Successfully deleted your gif.", 3000);
+		
+		toast("Successfully deleted your gif.", 1000);
+
+		
 	},
 
 	render: function(){

@@ -38,7 +38,7 @@ app.GifCollectionView = Backbone.View.extend({
 		client.on( "aftercopy", function( event ) {
 			// `this` === `client`
 			// `event.target` === the element that was clicked
-			toast('Copied to Clipboard.', 2000);
+			toast('Copied to Clipboard.', 1000);
 		});
 
 		// News elements with this class will be automaticly registered as a ZeroClipboard object (hopefully)

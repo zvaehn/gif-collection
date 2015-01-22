@@ -21,5 +21,3 @@ $(document).ready(function(){
     	$('.zeroclipboard-is-hover').parents('.menu').hide();
     });
 });
-
-
