@@ -1,9 +1,6 @@
 @import "compass/css3";
 @import "vars/_colors";
 @import "_materialize.scss";
-//@import "vars/*";
-
-
 
 body {
 	font-size: 14px;
@@ -13,10 +10,6 @@ footer {
 	margin-top: 100px;
 	color: white;
 	border-top: 1px solid #888;
-}
-
-header {
-	padding-bottom: 50px;
 }
 
 .mdi-action-favorite-outline.toggable:hover{
@@ -37,12 +30,28 @@ header {
 
 .form_wrapper {
 	padding: 20px 0 20px 0;
-	margin: 20px 0 20px 0;
+	margin: 15px 0 50px 0;
 }
 
 .error-message {
 	color: red;
 	margin-bottom: 15px;
+}
+
+main > .container {
+	margin-top: 50px;
+}
+
+.container.row.flashmessage {
+	margin-bottom: 0;
+	margin-top: 0;
+}
+
+.parallax-text {
+	font-size: 60px;
+	text-align: center;
+	padding: 100px 0 100px 0;
+	display: block;
 }
 
 .subnavigation {
@@ -52,6 +61,54 @@ header {
 	> .row {
 		padding-top: 15px;
 	}
+}
+
+.options {
+	float: right;
+
+	li {
+		display: inline-block;
+		margin-left: 10px;
+	}
+}
+
+ul.horizontal {
+	padding: 0;
+	margin: 0;
+
+	li {
+		display: inline-block;
+		margin-right: 10px;
+	}
+
+	.spacer {
+		width: 30px;
+	}
+}
+
+.toggle_options {
+	@include transition-duration(2s);
+	@include transition-property(all);
+
+	.expanded {
+		@include transform(rotate(180deg));
+	}
+}
+
+#option_panel {
+	display: none;
+}
+
+.preloader-centered {
+	text-align: center;
+	margin: 150px 0 100px 0;
+}
+
+.message {
+	padding: 15px;
+	border: 1px solid #ccc;
+	margin-top: 25px;
+	margin-bottom: 25px;
 }
 
 .flex-images { 
@@ -68,6 +125,8 @@ header {
 		background-color: rgba(51, 51, 51, 0.8);
 		font-size: 25px;
 		display: none;
+
+		@include transition(2s all);
 
 		&:active {
 			display: block;

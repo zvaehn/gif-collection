@@ -1,25 +1,11 @@
 <?php
 App::uses('AppModel', 'Model');
-/**
- * User Model
- *
- * @property Gif $Gif
- */
+
 class User extends AppModel {
 
-/**
- * Primary key field
- *
- * @var string
- */
 	public $primaryKey = 'user_id';
 	public $displayField = 'email';
 
-/**
- * Validation rules
- *
- * @var array
- */
 	public $validate = array(
 		'email' => array(
 			'email' => array(
@@ -49,13 +35,7 @@ class User extends AppModel {
 		),
 	);
 
-	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
-/**
- * hasMany associations
- *
- * @var array
- */
 	public $hasMany = array(
 		'Gif' => array(
 			'className' => 'Gif',

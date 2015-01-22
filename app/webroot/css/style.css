@@ -11338,63 +11338,143 @@ ul.side-nav.fixed.right-aligned {
     margin-bottom: 5em;
   }
 }
-/* line 8, ../sass/style.scss */
+/* line 5, ../sass/style.scss */
 body {
   font-size: 14px;
 }
 
-/* line 12, ../sass/style.scss */
+/* line 9, ../sass/style.scss */
 footer {
   margin-top: 100px;
   color: white;
   border-top: 1px solid #888;
 }
 
-/* line 18, ../sass/style.scss */
-header {
-  padding-bottom: 50px;
-}
-
-/* line 23, ../sass/style.scss */
+/* line 16, ../sass/style.scss */
 .mdi-action-favorite-outline.toggable:hover:before {
   content: '\e62a';
 }
 
-/* line 29, ../sass/style.scss */
+/* line 22, ../sass/style.scss */
 .mdi-action-favorite.toggable:hover:before {
   content: '\e62b';
 }
 
-/* line 38, ../sass/style.scss */
+/* line 31, ../sass/style.scss */
 .form_wrapper {
   padding: 20px 0 20px 0;
-  margin: 20px 0 20px 0;
+  margin: 15px 0 50px 0;
 }
 
-/* line 43, ../sass/style.scss */
+/* line 36, ../sass/style.scss */
 .error-message {
   color: red;
   margin-bottom: 15px;
 }
 
-/* line 48, ../sass/style.scss */
+/* line 41, ../sass/style.scss */
+main > .container {
+  margin-top: 50px;
+}
+
+/* line 45, ../sass/style.scss */
+.container.row.flashmessage {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+/* line 50, ../sass/style.scss */
+.parallax-text {
+  font-size: 60px;
+  text-align: center;
+  padding: 100px 0 100px 0;
+  display: block;
+}
+
+/* line 57, ../sass/style.scss */
 .subnavigation {
   z-index: 10;
   background-color: rgba(255, 255, 255, 0.95);
 }
-/* line 52, ../sass/style.scss */
+/* line 61, ../sass/style.scss */
 .subnavigation > .row {
   padding-top: 15px;
 }
 
-/* line 57, ../sass/style.scss */
+/* line 66, ../sass/style.scss */
+.options {
+  float: right;
+}
+/* line 69, ../sass/style.scss */
+.options li {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+/* line 75, ../sass/style.scss */
+ul.horizontal {
+  padding: 0;
+  margin: 0;
+}
+/* line 79, ../sass/style.scss */
+ul.horizontal li {
+  display: inline-block;
+  margin-right: 10px;
+}
+/* line 84, ../sass/style.scss */
+ul.horizontal .spacer {
+  width: 30px;
+}
+
+/* line 89, ../sass/style.scss */
+.toggle_options {
+  -webkit-transition-duration: 2s;
+  -moz-transition-duration: 2s;
+  -o-transition-duration: 2s;
+  -ms-transition-duration: 2s;
+  transition-duration: 2s;
+  -webkit-transition-property: all;
+  -moz-transition-property: all;
+  -o-transition-property: all;
+  -ms-transition-property: all;
+  transition-property: all;
+}
+/* line 93, ../sass/style.scss */
+.toggle_options .expanded {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+/* line 98, ../sass/style.scss */
+#option_panel {
+  display: none;
+}
+
+/* line 102, ../sass/style.scss */
+.preloader-centered {
+  text-align: center;
+  margin: 150px 0 100px 0;
+}
+
+/* line 107, ../sass/style.scss */
+.message {
+  padding: 15px;
+  border: 1px solid #ccc;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+/* line 114, ../sass/style.scss */
 .flex-images {
   overflow: hidden;
   display: table;
   /* Allow the centering to work */
   margin: 0 auto;
 }
-/* line 62, ../sass/style.scss */
+/* line 119, ../sass/style.scss */
 .flex-images .menu {
   position: absolute;
   margin: 0;
@@ -11404,28 +11484,33 @@ header {
   background-color: rgba(51, 51, 51, 0.8);
   font-size: 25px;
   display: none;
+  -webkit-transition: 2s all;
+  -moz-transition: 2s all;
+  -o-transition: 2s all;
+  -ms-transition: 2s all;
+  transition: 2s all;
 }
-/* line 72, ../sass/style.scss */
+/* line 131, ../sass/style.scss */
 .flex-images .menu:active {
   display: block;
 }
-/* line 76, ../sass/style.scss */
+/* line 135, ../sass/style.scss */
 .flex-images .menu li {
   display: inline-block;
   width: 20%;
 }
-/* line 81, ../sass/style.scss */
+/* line 140, ../sass/style.scss */
 .flex-images .menu button {
   display: inline-block;
   background-color: transparent;
   color: white;
   border: none;
 }
-/* line 87, ../sass/style.scss */
+/* line 146, ../sass/style.scss */
 .flex-images .menu button:hover {
   color: #2196F3;
 }
-/* line 93, ../sass/style.scss */
+/* line 152, ../sass/style.scss */
 .flex-images .item {
   float: left;
   margin: 4px;
@@ -11435,12 +11520,12 @@ header {
   position: relative;
   text-align: center;
 }
-/* line 103, ../sass/style.scss */
+/* line 162, ../sass/style.scss */
 .flex-images .item img {
   width: auto;
   height: 100%;
 }
-/* line 108, ../sass/style.scss */
+/* line 167, ../sass/style.scss */
 .flex-images .item:hover .menu {
   display: block;
 }

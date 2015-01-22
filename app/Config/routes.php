@@ -21,7 +21,7 @@
  */
 
 
-	Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'home'));
+	Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'landing'));
 
 	Router::connect('/register', array('controller' => 'users', 'action' => 'add'));
 	Router::connect('/login', array('controller' => 'users', 'action' => 'login'));

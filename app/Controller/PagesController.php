@@ -30,22 +30,33 @@ App::uses('AppController', 'Controller');
  */
 class PagesController extends AppController {
 
-/**
- * This controller does not use a model
- *
- * @var array
- */
 	public $uses = array();
+	
+	public $components = array(
+		'Session',
+        'Email', 
+        'Cookie',
+	);
+		
+	public function beforeFilter() {
+        // Allowed actions if not logged in
+        $this->Auth->allow('display');
+    }
 
-/**
- * Displays a view
- *
- * @return void
- * @throws NotFoundException When the view file could not be found
- *	or MissingViewException in debug mode.
- */
+	/**
+	 * Displays a view
+	 *
+	 * @return void
+	 * @throws NotFoundException When the view file could not be found
+	 *	or MissingViewException in debug mode.
+	 */
 	public function display() {
 		$path = func_get_args();
+
+		// Redirects the user to his gallery if he is already logged in
+		if($path[0] == "landing" && $this->Session->check('User.user_id')) {
+			$this->redirect('/gifs/gallery');
+		}
 
 		$count = count($path);
 		if (!$count) {
@@ -62,11 +73,13 @@ class PagesController extends AppController {
 		if (!empty($path[$count - 1])) {
 			$title_for_layout = Inflector::humanize($path[$count - 1]);
 		}
+
 		$this->set(compact('page', 'subpage', 'title_for_layout'));
 
 		try {
 			$this->render(implode('/', $path));
-		} catch (MissingViewException $e) {
+		} 
+		catch (MissingViewException $e) {
 			if (Configure::read('debug')) {
 				throw $e;
 			}

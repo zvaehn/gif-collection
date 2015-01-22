@@ -9,7 +9,12 @@ this.collection.fetch().done(function(){
 
 new app.DocumentView({collection: self.collection});	 
 
-$(".button-collapse").sideNav();
+
+$(document).ready(function(){
+	$('.parallax').parallax();
+	$('.button-collapse').sideNav();
+});
+
 
 /*
 var client = new ZeroClipboard($(".clipboard-button"));

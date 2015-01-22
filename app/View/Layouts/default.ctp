@@ -4,7 +4,7 @@
 	<?php echo $this->Html->charset(); ?>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title><?php echo "GIFS > ".$this->fetch('title'); ?></title>
+	<title><?php echo ".GIF > ".$this->fetch('title'); ?></title>
 	<?php
 		echo $this->Html->meta('icon');
 		echo $this->Html->css('style.css');
@@ -18,7 +18,7 @@
 	    	<div class="nav-wrapper container">
 	    		<div class="row">
 	    			<a class="button-collapse" href="#" data-activates="nav-mobile"><i class="mdi-navigation-menu"></i></a>
-				    <?= $this->Html->link('GIFs', '/', array('class' => 'brand-logo mdi-image-collections')) ?>
+				    <?= $this->Html->link('.GIF', '/', array('class' => 'brand-logo mdi-image-collections')) ?>
 				    <ul id="nav-mobile" class="right side-nav">
 					    <?php
 					    if(!$this->Session->check('User')) {
@@ -29,9 +29,6 @@
 					    }
 					    else {
 					    	?>
-							<li><?= $this->Html->link('Favorites', '/') ?></li>
-							<li><?= $this->Html->link('Random', '/') ?></li>
-							
 							<li><?= $this->Html->link('Logout', '/logout') ?></li>
 					    	<?php
 					    }
@@ -43,11 +40,12 @@
 	</header>
 
 	<main>
-		<div class="container">
+		<div class="container row flashmessage">
 			<?php echo $this->Session->flash(); ?>
-			
-			<?php echo $this->fetch('content'); ?>
 		</div>
+		
+		<?php echo $this->fetch('content'); ?>
+		
 	</main>
 		
 	<footer>
@@ -56,9 +54,9 @@
 				<div class="col l6 s12">
 					<h5 class="white-text">Links</h5>
 					<ul>
-						<li><a class="white-text text-lighten-3" href="#0">Github Repository</a></li>
-						<li><a class="white-text text-lighten-3" href="#0">Documentation</a></li>
-						<li><a class="white-text text-lighten-3" href="#0">Demo-Page</a></li>
+						<li><a class="white-text text-lighten-3" href="https://github.com/zvaehn/gif-collection">Github Repository</a></li>
+						<li><a class="white-text text-lighten-3" href="https://github.com/zvaehn/gif-collection/wiki/Dokumentation">Documentation</a></li>
+						<li><a class="white-text text-lighten-3" href="http://gifs.sven-schiffer.de">Demo-Page</a></li>
 					</ul>
 				</div>
 				<div class="col l4 offset-l2 s12">
