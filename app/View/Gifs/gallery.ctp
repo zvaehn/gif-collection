@@ -117,7 +117,7 @@
 				</div>
 			</div>
 
-			<p><i class="mdi-action-search"> Getting your images...</i></p>
+			<p><i class="mdi-action-search"> Collecting your images...</i></p>
 		</div>
 
 		<div id="gif_list" class="flex-images">

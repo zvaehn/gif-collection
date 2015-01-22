@@ -7,29 +7,23 @@ App::uses('AppModel', 'Model');
  */
 class Gif extends AppModel {
 
-/**
- * Primary key field
- *
- * @var string
- */
+	// Database primary key
 	public $primaryKey = 'gif_id';
 
-/**
- * Display field
- *
- * @var string
- */
+	// Field to display if we only want a quick Model overview
 	public $displayField = 'url';
 
+	// This method is called before a find function is called
 	public function beforeFind($query) {
+		// We are manipulating the query that noone will see somebody else's Images
         $query['conditions'][$this->alias . '.user_id'] = $this->user_id;
         return $query;
     }
-/**
- * Validation rules
- *
- * @var array
- */
+
+    // Validation rules
+    // 'field'  
+    // 	  => 'custom rule name'
+    // 	      => which filter/rules should be applied
 	public $validate = array(
 		'url' => array(
 			'url' => array(
@@ -37,7 +31,6 @@ class Gif extends AppModel {
 				'message' => 'You must enter a valid URL.',
 				'allowEmpty' => false,
 				'required' => true,
-				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
@@ -48,13 +41,7 @@ class Gif extends AppModel {
 		),
 	);
 
-	//The Associations below have been created with all possible keys, those that are not needed can be removed
-
-/**
- * belongsTo associations
- *
- * @var array
- */
+	// The Database table associations
 	public $belongsTo = array(
 		'User' => array(
 			'className' => 'User',

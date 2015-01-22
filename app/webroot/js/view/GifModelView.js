@@ -51,15 +51,33 @@ app.GifModelView = Backbone.View.extend({
 	},
 
 	deleteModel: function() {
-		this.model.destroy();
-		this.$el.fadeOut('slow',function(){
+		
+		/*this.$el.fadeOut('slow',function(){
 			this.remove();
-		});
+		});*/
 		//this.remove();
 		
-		toast("Successfully deleted your gif.", 1000);
+		//toast("Successfully deleted your gif.", 1000);
 
-		
+		var collection = this;
+
+		this.$el.fadeOut('slow', 
+			toast(
+				'Gif deleted <a class="btn-flat yellow-text" id="gif_undo_delete" data-gif-id="'+collection.model.id+'" href="#">Undo<a>', 
+				5000,
+				'',
+				function() {
+					// delete action
+					collection.model.destroy();
+					collection.remove();
+				}
+			)
+		);
+	},
+
+	restoreModel: function() {
+		// add the model to the collecton
+		// display on dom again
 	},
 
 	render: function(){

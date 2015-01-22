@@ -40,6 +40,7 @@ class PagesController extends AppController {
 		
 	public function beforeFilter() {
         // Allowed actions if not logged in
+        // We are allowing the user to visit all static pages
         $this->Auth->allow('display');
     }
 

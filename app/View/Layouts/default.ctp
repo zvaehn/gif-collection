@@ -78,8 +78,6 @@
 		</div>
 	</footer>
 
-	<div id="fucking_clipboard_button">CLICK ME</div>
-
 	<?php echo $this->element('sql_dump'); ?>
 
 	<?php echo $this->Html->script('bin/jquery.min'); ?>

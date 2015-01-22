@@ -1,34 +1,32 @@
 <?php
 App::uses('AppController', 'Controller', 'Session');
 
-
 class GifsController extends AppController {
 
 	public $components = array('Paginator', 'Session', 'RequestHandler');
+
+    // This Controller acts as a REST API. So we dont want cake.php to render views
     public $autoRender = false;
 
+    // Is called before any GifsController action
     public function beforeFilter() {    
+        // Set the user_id on our Gif-Model so that we're only getting user specific gifs
         $this->Gif->user_id = $this->Session->read('User.user_id');
     }
 
+    // Find all gifs and order them descending
     public function index() {
         $gifs = $this->Gif->find('all', array('order' => array('Gif.created_at DESC')));
         $this->layout = 'ajax';
         echo json_encode($gifs);
     }
 
+    // Render our gallery, better known as main page view
     public function gallery() {
         $this->render('gallery');
     }
 
-    /*
-    public function view($id) {
-        $gif = $this->Gif->findByGif_id($id);
-        $this->layout = 'ajax';
-
-        echo json_encode($gif);
-    }*/
-
+    // Add a new Gif to the database
     public function add() {
         $this->layout = 'ajax';
 
@@ -57,6 +55,8 @@ class GifsController extends AppController {
         ));
     }
 
+    // This function is called whenever we need to change s.th.
+    // The 'action' parameter stands for a specific task
     public function edit($id) {
         $this->Gif->id = $id;
 
@@ -67,6 +67,7 @@ class GifsController extends AppController {
             
                 $is_favorite = ($this->request->data['payload']['isFavorite'] ? true : false);
 
+                // Update the favorite field
                 if($this->Gif->saveField('is_favorite', $is_favorite)) {
                     $status = 'ok';
                     $message = 'Marked as favorite.';
@@ -92,6 +93,7 @@ class GifsController extends AppController {
         ));
     }
 
+    // Deleting a gif. There is nothing more to say.
     public function delete($id) {
         if ($this->Gif->delete($id)) {
             $status = 'ok';

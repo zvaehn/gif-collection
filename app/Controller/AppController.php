@@ -36,13 +36,15 @@ class AppController extends Controller {
     	//'Security',
         'Session', 
         'Auth' => array(
-            'loginRedirect' => array('controller' => 'pages', 'action' => 'landing'),
-            'logoutRedirect' => array('controller' => 'users', 'action' => 'login'),
-            'authError' => 'You have to create an account before you can use this application.',
+            'loginRedirect' => array('controller' => 'pages', 'action' => 'landing'), // Where to go after login
+            'logoutRedirect' => array('controller' => 'users', 'action' => 'login'), // Where to go after logout
+            'authError' => 'You have to create an account before you can use this application.', // Message for a restricted area
         ),
     );
 
 	public function beforeFilter() {
+        // We are denying everything by default.
+        // The specify controllers will inerhit / override this
         $this->Auth->deny();
     }
 }
