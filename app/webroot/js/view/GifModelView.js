@@ -5,8 +5,6 @@ app.GifModelView = Backbone.View.extend({
 
 	attributes: {
 		class: 'item', 
-		'data-w': '300', 
-		'data-h': '400',
 		//'data-gif_id': this.model.attributes.Gif.gif_id
 	},
 
@@ -16,9 +14,8 @@ app.GifModelView = Backbone.View.extend({
 		//'click .clipboard-button': 'copyToClipboard', --> see copyToClipboard commentary
 		'click .favorite': 'toggleFavorites',
 		'click .delete': 'deleteModel',
-		'click .mdi-image-crop-free': 'enlargeGif',
-		'click .arrow-left': 'moveLeft',
-		'click .arrow-right': 'moveRight'
+		'click .open-gallery': 'openGallery',
+		'click .close-gallery': 'closeGallery',
 	},
 
 	initialize: function(options) {
@@ -48,7 +45,7 @@ app.GifModelView = Backbone.View.extend({
 		});
 	},
 
-	deleteModel: function() {
+	deleteModel: function(event) {
 		
 		/*this.$el.fadeOut('slow',function(){
 			this.remove();
@@ -59,6 +56,8 @@ app.GifModelView = Backbone.View.extend({
 
 		var collection = this;
 
+		iso.isotope('remove', $(event.target).parents('.item') ).isotope('layout');
+
 		this.$el.fadeOut('slow', 
 			toast(
 				'Gif deleted <a class="btn-flat yellow-text" id="gif_undo_delete" data-gif-id="'+collection.model.id+'" href="#">Undo<a>', 
@@ -68,6 +67,7 @@ app.GifModelView = Backbone.View.extend({
 					// delete action
 					collection.model.destroy();
 					collection.remove();
+					$('#gif_list').isotope('reloadItems');
 				}
 			)
 		);
@@ -78,107 +78,54 @@ app.GifModelView = Backbone.View.extend({
 		// display on dom again
 	},
 
-	enlargeGif: function(){
+	openGallery: function(event){
 		var self = this;
 		
 		this.lastModel = null;
-		
-		$('.arrow-left').fadeIn('fast');
-		$('.arrow-right').fadeIn('fast');
-		
-		var isFirstGif = this.collection.last() === this.model ? true : false;
-		var isLastGif = this.collection.first() === this.model ? true : false;
 
-		if(isFirstGif){
-			$('.arrow-left').fadeOut('fast');
-		} else if(isLastGif){
-			$('.arrow-right').fadeOut('fast');
+		// Remove the flex-image class and add gallery-view
+		$('.gif_wrapper').removeClass('list-view').addClass('gallery-view');
+
+		// Remove all inline css styles from flex-image
+		$('.gif_wrapper .item').removeAttr('style');
+
+		// Add the .active class to our event target
+		$(event.target).parents('.item').addClass('active');
+
+		// Display and initialize the controls
+		if($(event.target).parents('.item').prevUntil(':visible').length > 0) {
+			$('.gallery-controls .left-control').fadeIn('fast');
+		}
+		else {
+			$('.gallery-controls .left-control').hide();	
 		}
 
-		$('.blur').fadeIn('slow',function(){
-			self.renderInFullScreen(self.model);
-		});
-		
-		$('.arrow-left').on('click', function(){
-			self.moveLeft(self.model);
-  		});
-  		
-  		$('.arrow-right').on('click', function(){
-			self.moveRight(self.model);
-  		});
-  		
-  		$('.close-lightbox').on('click', function(){
-			self.closeLightbox();
-  		});
+		if($(event.target).parents('.item').nextUntil(':visible').length > 0) {
+			$('.gallery-controls .right-control').fadeIn('fast');
+		}	
+		else {
+			$('.gallery-controls .right-control').hide();	
+		}	
 	},
 
-	moveLeft:function(model){
-		var self = this;
-		
-		$('.arrow-right').fadeIn('fast')
-		
-		if(this.lastModel === null) {
-			currentModel = this.model;
-		} else {
-			currentModel = this.lastModel
-		}
+	closeGallery: function(event) {
+		$('.gif_wrapper').removeClass('gallery-view');
+		$('.gif_wrapper').addClass('list-view');
 
-		var isFirstGif = this.collection.last() === currentModel ? true : false;
-		var nextGifFirstGif = this.collection.last() === this.collection.at(this.collection.indexOf(currentModel)+1) ? true : false;
-		var currentIndex = this.collection.indexOf(currentModel);
-				
-		if(isFirstGif || nextGifFirstGif ){
-			$('.arrow-left').fadeOut('fast')
-		} 
-		var renderGif = this.collection.at(currentIndex + 1);
+		// Remove the .active class from our event target
+		$(event.target).parents('.item').removeClass('active');
 
-		$('.lightbox').fadeOut('slow',function(){
-			self.renderInFullScreen(renderGif);
+		// Recalculate our images with fleximages
+		/*$('#gif_list').flexImages({
+			rowHeight: 300
+		});*/
+
+		iso.isotope('reloadItems');
+
+		iso.isotope({
+			sortBy : 'created_at',
+    		sortAscending: true
 		});
-
-		this.lastModel = renderGif;
-
-
-	},
-
-	moveRight:function(model){
-		var self = this;
-		
-		$('.arrow-left').fadeIn('fast')
-		
-		if(this.lastModel === null) {
-			currentModel = this.model;
-		} else {
-			currentModel = this.lastModel
-		}
-		
-		var isLastGif = this.collection.first() === currentModel ? true : false;
-		var nextGifLastGif = this.collection.first() === this.collection.at(this.collection.indexOf(currentModel)-1) ? true : false;
-		var currentIndex = this.collection.indexOf(currentModel);
-				
-		if(isLastGif || nextGifLastGif ){
-			$('.arrow-right').fadeOut('fast')
-		}
-		
-		var renderGif = this.collection.at(currentIndex - 1);
-
-		$('.lightbox').fadeOut('slow',function(){
-			self.renderInFullScreen(renderGif);
-		});
-
-		this.lastModel = renderGif;
-		this.collection.reset
-
-	},
-
-	closeLightbox: function(){
-		$('.blur').fadeOut('slow');
-		$('.lightbox').html('');
-		//this.collection.reset(this.previousModels);
-		$('.arrow-left').unbind('click');
-  		$('.arrow-right').unbind('click');
-  		$('.close-lightbox').unbind('click');
-
 	},
 
 	render: function(){
@@ -186,12 +133,4 @@ app.GifModelView = Backbone.View.extend({
 		this.$el.html(tmpl(this.model.attributes.Gif));
     	return this;
   	},
-
-  	renderInFullScreen: function(gif){
-  		var self = this;
-  		$('.lightbox').fadeIn('slow').html(_.template(this.template)(gif.attributes.Gif));
-  		
-  	}
-
-
 });

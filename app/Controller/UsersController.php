@@ -52,6 +52,8 @@ class UsersController extends AppController {
 	}
 
 	public function add() {
+        $this->set('title_for_layout', 'Register');
+
 		if ($this->request->is('post')) {
 			$this->User->create();
             $this->User->registed_at = date('Y-m-d G:i:s');
@@ -106,6 +108,8 @@ class UsersController extends AppController {
 
 	
     public function login() {
+        $this->set('title_for_layout', 'Login');
+
         if($this->Auth->loggedIn()) {
             return $this->redirect($this->Auth->loginRedirect);
         }

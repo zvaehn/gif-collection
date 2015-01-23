@@ -24,12 +24,14 @@ app.GifCollectionView = Backbone.View.extend({
 				self.renderModel(item);
 			});
 			
-			$('#gif_list').flexImages({
+			/*$('#gif_list').flexImages({
 				rowHeight: 300
-			});
+			});*/
+		    
+			//iso.isotope('reloadItems');
 		}
 		else {
-			$('#gif_list').html('<i class="mdi-alert-warning"></i> You dont have any gifs yet.');
+			//$('#gif_list').html('<i class="mdi-alert-warning"></i> You dont have any gifs yet.');
 		}
 
 		// every element with the .clipboard-button class becomes a zeroclipboard
@@ -67,16 +69,19 @@ app.GifCollectionView = Backbone.View.extend({
 		/*}*/);
 		this.renderModel(this.collection.last());
 
-		$('#gif_list').flexImages({
+		/*$('#gif_list').flexImages({
 			rowHeight: 300
-		});
+		});*/
+
+		//$('#gif_list').isotope('reloadItems');
 
 		toast("Successfully added your gif.", 3000);
 	},
 
 	renderModel: function(item) {
 		this.View = new app.GifModelView({model: item, collection: this.collection});
-		this.$el.prepend(this.View.render().el);
+		iso.append(this.View.render().el).isotope( 'appended', this.View.render().el);
+		//this.$el.prepend(this.View.render().el);
 	}
 
 });

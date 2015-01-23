@@ -23,6 +23,7 @@ class GifsController extends AppController {
 
     // Render our gallery, better known as main page view
     public function gallery() {
+        $this->set('title_for_layout', 'Gallery');
         $this->render('gallery');
     }
 

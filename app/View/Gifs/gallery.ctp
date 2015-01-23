@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row" style="position: relative">
 		<script id="gifTemplate" type="text/template">
-			<img src="<%= url %>">
+			<img src="<%= url %>" data-created-at='<%= created_at %>'>
 			<ul class='menu'>
 				<li>
 					<div class='clipboard-button' id='clipboard_button_id_<%= gif_id %>' data-clipboard-text='<%= url %>'>
@@ -9,8 +9,8 @@
 					</div>
 				</li>
 				<li>
-					<button class='mdi-image-crop-free'></button>
-					<!-- mdi-navigation-fullscreen-exit -->
+					<button class='mdi-image-crop-free open-gallery'></button>
+					<button class='mdi-navigation-fullscreen-exit close-gallery'></button>
 				</li>
 				<li>
 					<% if (is_favorite == true) { %>
@@ -28,10 +28,8 @@
 	    <div class="col s12">
 	    	<div class="row" id="gif_input_wrapper">
 	        	<div class="input-field col s10">
-	        	<!-- do cake way -->
 	        		<label for="gif_input">Paste your URL here</label>
 	        		<input id="gif_input" class="validate" maxlength="100" type="text" required="required">
-	        	<!---->	
 				</div>
 				<div class="input-field col s2">
 					<ul class="options">
@@ -59,7 +57,7 @@
 							<input class="with-gap" name="order-by" type="radio" id="order_by_newest" checked />
 	  						<label for="order_by_newest">Newest first</label>
 
-							<input class="with-gap" name="order-by" type="radio" id="order_by_oldest" checked />
+							<input class="with-gap" name="order-by" type="radio" id="order_by_oldest" />
 	  						<label for="order_by_oldest">Oldest first</label>
 	  					</li>
 					</ul>
@@ -119,10 +117,17 @@
 
 			<p><i class="mdi-action-search"> Collecting your images...</i></p>
 		</div>
+	</div>
+</div>
 
-		<div id="gif_list" class="flex-images">
+<div class="container-fluid">
+	<div class="container gif_wrapper list-view">
+		<div class="gallery-controls">
+			<i class="mdi-hardware-keyboard-arrow-left left-control"></i>
+			<i class="mdi-hardware-keyboard-arrow-right right-control"></i>
+		</div>
+		<div id="gif_list" class="row">
 			
-
 		</div>
 	</div>
 </div>

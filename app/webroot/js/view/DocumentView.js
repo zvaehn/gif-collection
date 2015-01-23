@@ -31,33 +31,56 @@ app.DocumentView = Backbone.View.extend({
 	},
 
 	order_creationdate_asc: function() {
-		this.collection.comparator = function(model, model2) {
+		/*this.collection.comparator = function(model, model2) {
 		    return model.get('Gif').created_at < model2.get('Gif').created_at;
 		}
 
 		this.collection.sort();
 		this.view = new app.GifCollectionView({collection: this.collection});
 		$('#gif_list').html('');
-		this.view.render();
+		this.view.render();*/
+
+		//$container.isotope({ sortBy : 'created_at' });
+
+		iso.isotope({
+    		sortBy : 'created_at',
+    		sortAscending: false 
+    	});
 	},
 
 	order_creationdate_desc: function() {
-		this.collection.comparator = function(model, model2) {
+		/*this.collection.comparator = function(model, model2) {
 		    return model.get('Gif').created_at > model2.get('Gif').created_at;
 		}
 
 		this.collection.sort();
 		this.view = new app.GifCollectionView({collection: this.collection});
 		$('#gif_list').html('');
-		this.view.render();
+		this.view.render();*/
+
+		iso.isotope({
+    		sortBy : 'created_at',
+    		sortAscending: true
+    	});
 	},
 
-	filter_favorite: function() {
-		$('.mdi-action-favorite-outline').parents('.item').fadeOut('slow');
+	filter_favorite: function(event) {
+		//$('.mdi-action-favorite-outline').parents('.item').fadeOut('slow');
 
-		$('#gif_list').flexImages({
-			rowHeight: 300
-		});
+		var _this = event.target;
+
+		if($(_this).is(':checked')) {
+			iso.isotope({ 
+				filter: function() {
+				    return $(this).find('.menu .mdi-action-favorite').length;
+				}
+			});			
+		}
+		else {
+			iso.isotope({ 
+				filter: '*'
+			});	
+		}
 	},
 
 	restoreModel: function(e, el) {

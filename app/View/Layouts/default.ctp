@@ -90,7 +90,7 @@
 	<?php echo $this->Html->script('bin/jquery.min'); ?>
 	<?php echo $this->Html->script('bin/underscore.min'); ?>
 	<?php echo $this->Html->script('bin/backbone.min'); ?>
-	<?php echo $this->Html->script('bin/flex-images.min'); ?>
+	<?php echo $this->Html->script('bin/isotope.min'); ?>
 	<?php echo $this->Html->script('bin/ZeroClipboard.min'); ?>
 	<?php echo $this->Html->script('materialize/bin/materialize'); ?>
 	<?php echo $this->Html->script('model/GifModel'); ?>

@@ -1,5 +1,4 @@
 @import "compass/css3";
-@import "vars/_colors";
 @import "_materialize.scss";
 
 body {
@@ -111,15 +110,8 @@ ul.horizontal {
 	margin-bottom: 25px;
 }
 
-.clipboard-button {
-	cursor: pointer;
-}
+.gif_wrapper {
 
-.flex-images { 
-	overflow: hidden; 
-	display: table;   /* Allow the centering to work */
-	margin: 0 auto;
-	
 	.menu {
 		position: absolute;
 		margin: 0;
@@ -147,33 +139,194 @@ ul.horizontal {
 				color: #2196F3;
 			}
 		}
+
+		.clipboard-button {
+			cursor: pointer;
+		}
 	}
 
-	.item { 
-		float: left; 
-		margin: 4px; 
-		border: 1px solid #eee; 
-		box-sizing: content-box; 
-		overflow: hidden; 
-		position: relative;
-		text-align: center;
+	.gallery-controls {
+		font-size: 60px;
+		font-weight: 300;
+		color: #777;
 
-		.zeroclipboard-is-hover {
-			.clipboard-icon {
-				color: #2196F3;
+		.left-control {
+			left: 15px;
+		}
+		.right-control {
+			right: 15px;
+		}
+
+		[class*="-control"] {
+			position: fixed;
+			top: 50%;
+			bottom: 50%;
+			opacity: 0.5;
+
+			&:hover {
+				opacity: 1.0;
+				cursor: pointer;
 			}
 		}
-		
-		img { 
-			width: auto; 
-			height: 100%; 
+	}
+
+	.zeroclipboard-is-hover {
+		.clipboard-icon {
+			color: #2196F3;
+		}
+	}
+
+	&.list-view { 
+		/*overflow: hidden; 
+		display: table;
+		margin: 0 auto;*/
+
+		@include transition(0.5s display);
+
+		.open-gallery {
+			display: inline-block;
 		}
 
-		&:hover {
-		 	.menu {
-		 		@include transition(0.3s all);
+		.close-gallery {
+			display: none;
+		}
+
+		.item { 
+			float: left; 
+			margin: 4px; 
+			border: 1px solid #eee; 
+			box-sizing: content-box; 
+			overflow: hidden; 
+			position: relative;
+			text-align: center;
+			height: 200px;
+			width: 200px;
+			
+			img { 
+				width: auto; 
+				height: 100%; 
+				outline: none;
+			}
+
+			&:hover {
+	 			.menu {
+					display: block !important;
+				}
+			}
+		}
+
+		.gallery-controls {
+			display: none;
+			@include transition(1s display);
+		}
+	}
+
+
+	&.gallery-view {
+	
+		#gif_list {
+			height: auto !important;
+		}
+
+		.open-gallery {
+			display: none;
+		}
+
+		.close-gallery {
+			display: inline-block;
+		}
+
+		.item {
+			display: none;
+			text-align: center;
+			position: relative;
+
+			img {
+				height: 100%;
+				width: auto;
+			}
+
+			&.active {
+				display: block;
+				height: 500px;
+				width: 100%;
+				@include transition(0.3s all);
+			}
+
+			.menu {
+				position: relative;
+				margin-top: -6px;
 				display: block !important;
 			}
 		}
+
+		.gallery-controls {
+			display: block;
+		}
 	}
 }
+
+
+/* LIGHTBOX */
+.blur {
+  display: none;
+  position: absolute;
+  z-index: 1000;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0, 0.8);
+}
+
+.lightbox {
+  display: none;
+  position: absolute;
+  z-index: 2000;
+  width: 700px;
+  height: 700px;
+  left: 50%;
+  top: 50%;
+  margin-left: -350px;
+  margin-top: -350px;
+  left: 20%;
+  top: 20%;
+  background-color: black !important;
+}
+
+.lightbox img {
+  width: 100%;
+  height: 100%;
+}
+
+.arrow-left{
+  display: block;
+  position: absolute;
+  z-index: 30000;
+  left: 0;
+  top: 20%;
+  background-color:green;
+  width: 20px;
+  height: 20px;
+}
+
+.arrow-right{
+  display: block;
+  position: absolute;
+  z-index: 30000;
+  right: 0;
+  top: 20%;
+  background-color:green;
+  width: 20px;
+  height: 20px;
+}
+
+.close-lightbox{
+  display: block;
+  position: absolute;
+  right: 0;
+  z-index: 30000;
+  top: 2%;
+  background-color:red;
+  width: 20px;
+  height: 20px;
+}
+
