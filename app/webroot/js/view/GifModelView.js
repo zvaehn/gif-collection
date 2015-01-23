@@ -88,6 +88,9 @@ app.GifModelView = Backbone.View.extend({
 		// Add the .active class to our event target
 		$(event.target).parents('.item').addClass('active');
 
+		// Save the top offset so we can scroll down there later
+		$(event.target).parents('.item').data('offset-top', $(event.target).parents('.item').css('top'));
+
 		// Display and initialize the controls
 		if($(event.target).parents('.item').prevUntil().length > 0) {
 			$('.gallery-controls .left-control').fadeIn('fast');
@@ -114,18 +117,11 @@ app.GifModelView = Backbone.View.extend({
 		// Remove the .active class from our event target
 		$(event.target).parents('.item').removeClass('active');
 
-		   console.log($(event.target).parents('.item').offset().top);
-
 		$('html, body').animate({
-			scrollTop: $(event.target).parents('.item').offset().top//.offset().top
+			scrollTop: $(event.target).parents('.item').data('offset-top')//.offset().top
     	}, 500);
 
-		/*iso.isotope('reloadItems');
-
-		iso.isotope({
-			sortBy : 'created_at',
-    		sortAscending: true
-		});*/
+		$(event.target).parents('.item').removeData('offset-top');
 	},
 
 	render: function(){
