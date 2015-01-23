@@ -26,8 +26,14 @@ app.DocumentView = Backbone.View.extend({
 	},
 
 	toggle_options: function(event) {
-		$('#gif_input_wrapper .toggle_options i').toggleClass('expanded');
-		$('#option_panel').slideToggle('fast');
+
+		if($('#gif_input_wrapper .toggle_options').hasClass('disabled')) {
+			return;
+		}
+		else {
+			$('#gif_input_wrapper .toggle_options i').toggleClass('expanded');
+			$('#option_panel').slideToggle('fast');
+		}
 	},
 
 	order_creationdate_asc: function() {

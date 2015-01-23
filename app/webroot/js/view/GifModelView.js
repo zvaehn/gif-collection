@@ -83,6 +83,11 @@ app.GifModelView = Backbone.View.extend({
 		
 		this.lastModel = null;
 
+		// Disable sort and filter panel
+		$('#gif_input_wrapper .toggle_options i').removeClass('expanded');
+		$('#gif_input_wrapper .toggle_options').addClass('disabled');
+		$('#option_panel').slideUp('fast');
+
 		// Remove the flex-image class and add gallery-view
 		$('.gif_wrapper').removeClass('list-view').addClass('gallery-view');
 
@@ -111,6 +116,8 @@ app.GifModelView = Backbone.View.extend({
 	closeGallery: function(event) {
 		$('.gif_wrapper').removeClass('gallery-view');
 		$('.gif_wrapper').addClass('list-view');
+
+		$('#gif_input_wrapper .toggle_options').removeClass('disabled');
 
 		// Remove the .active class from our event target
 		$(event.target).parents('.item').removeClass('active');
