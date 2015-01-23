@@ -181,8 +181,6 @@ ul.horizontal {
 		display: table;
 		margin: 0 auto;*/
 
-		@include transition(0.5s display);
-
 		.open-gallery {
 			display: inline-block;
 		}
@@ -194,13 +192,15 @@ ul.horizontal {
 		.item { 
 			float: left; 
 			margin: 4px; 
-			border: 1px solid #eee; 
+			//border: 1px solid #eee; 
 			box-sizing: content-box; 
 			overflow: hidden; 
-			position: relative;
 			text-align: center;
 			height: 200px;
 			width: 200px;
+			position: absolute;
+
+			@include transition(0.5s all);
 			
 			img { 
 				width: auto; 
@@ -242,6 +242,7 @@ ul.horizontal {
 			//position: relative;
 			height: 500px;
 			width: 100%;
+
 			@include transition(0.5s all);
 
 			img {

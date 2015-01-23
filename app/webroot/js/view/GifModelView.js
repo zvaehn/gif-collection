@@ -113,12 +113,12 @@ app.GifModelView = Backbone.View.extend({
 		// Remove the .active class from our event target
 		$(event.target).parents('.item').removeClass('active');
 
-		iso.isotope('reloadItems');
+		/*iso.isotope('reloadItems');
 
 		iso.isotope({
 			sortBy : 'created_at',
     		sortAscending: true
-		});
+		});*/
 	},
 
 	render: function(){
