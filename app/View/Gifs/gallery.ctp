@@ -27,11 +27,11 @@
 
 	    <div class="col s12">
 	    	<div class="row" id="gif_input_wrapper">
-	        	<div class="input-field col s10">
+	        	<div class="input-field col s7 m9">
 	        		<label for="gif_input">Paste your URL here</label>
 	        		<input id="gif_input" class="validate" maxlength="100" type="text" required="required">
 				</div>
-				<div class="input-field col s2">
+				<div class="input-field col s5 m3">
 					<ul class="options">
 						<li>
 							<a class="btn-floating waves-effect waves-light gif_add" id="gif_add">

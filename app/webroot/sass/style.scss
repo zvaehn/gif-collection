@@ -86,11 +86,12 @@ ul.horizontal {
 }
 
 .toggle_options {
-	@include transition-duration(2s);
-	@include transition-property(all);
-
+	@include transform(rotate(360deg));
+	
 	.expanded {
 		@include transform(rotate(180deg));
+		@include transition-duration(0.5s);
+		@include transition-property(all);
 	}
 }
 
@@ -239,7 +240,6 @@ ul.horizontal {
 		.item {
 			display: none;
 			text-align: center;
-			//position: relative;
 			height: 500px;
 			width: 100%;
 
@@ -261,6 +261,13 @@ ul.horizontal {
 				margin-top: -6px;
 				display: block !important;
 			}
+
+			@media #{$small-and-down} {
+				&.active {
+					height: auto;
+					width: 100%;
+				}
+			}
 		}
 
 		.gallery-controls {
@@ -269,67 +276,11 @@ ul.horizontal {
 	}
 }
 
-
-/* LIGHTBOX */
-.blur {
-  display: none;
-  position: absolute;
-  z-index: 1000;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0,0,0, 0.8);
-}
-
-.lightbox {
-  display: none;
-  position: absolute;
-  z-index: 2000;
-  width: 700px;
-  height: 700px;
-  left: 50%;
-  top: 50%;
-  margin-left: -350px;
-  margin-top: -350px;
-  left: 20%;
-  top: 20%;
-  background-color: black !important;
-}
-
-.lightbox img {
-  width: 100%;
-  height: 100%;
-}
-
-.arrow-left{
-  display: block;
-  position: absolute;
-  z-index: 30000;
-  left: 0;
-  top: 20%;
-  background-color:green;
-  width: 20px;
-  height: 20px;
-}
-
-.arrow-right{
-  display: block;
-  position: absolute;
-  z-index: 30000;
-  right: 0;
-  top: 20%;
-  background-color:green;
-  width: 20px;
-  height: 20px;
-}
-
-.close-lightbox{
-  display: block;
-  position: absolute;
-  right: 0;
-  z-index: 30000;
-  top: 2%;
-  background-color:red;
-  width: 20px;
-  height: 20px;
+.gif_wrapper {
+	@media #{$small-and-down} {
+		padding: 0;
+		margin: 0;
+		width: 100%;
+	}
 }
 

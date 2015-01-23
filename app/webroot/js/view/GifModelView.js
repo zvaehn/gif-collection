@@ -48,7 +48,6 @@ app.GifModelView = Backbone.View.extend({
 		collection.model.destroy();
 		collection.remove();
 		
-
 		/*this.$el.fadeOut('slow', 
 			toast(
 				'Gif deleted <a class="btn-flat yellow-text" id="gif_undo_delete" data-gif-id="'+collection.model.id+'" href="#">Undo<a>', 
@@ -58,7 +57,6 @@ app.GifModelView = Backbone.View.extend({
 					// delete action
 					collection.model.destroy();
 					collection.remove();
-					$('#gif_list').isotope('reloadItems');
 				}
 			)
 		);*/
