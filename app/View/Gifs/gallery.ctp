@@ -126,7 +126,7 @@
 			<i class="mdi-hardware-keyboard-arrow-left left-control"></i>
 			<i class="mdi-hardware-keyboard-arrow-right right-control"></i>
 		</div>
-		<div id="gif_list" class="row">
+		<div id="gif_list" class="row gif_list">
 			
 		</div>
 	</div>

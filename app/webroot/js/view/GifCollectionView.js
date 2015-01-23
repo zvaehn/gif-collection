@@ -22,13 +22,7 @@ app.GifCollectionView = Backbone.View.extend({
 			var self = this;
 			this.collection.each(function(item){
 				self.renderModel(item);
-			});
-			
-			/*$('#gif_list').flexImages({
-				rowHeight: 300
-			});*/
-		    
-			//iso.isotope('reloadItems');
+			});  
 		}
 		else {
 			//$('#gif_list').html('<i class="mdi-alert-warning"></i> You dont have any gifs yet.');
@@ -52,7 +46,16 @@ app.GifCollectionView = Backbone.View.extend({
 		this.undelegateEvents();
 		var url = $('#gif_input').val();
 		$('#gif_input').val('');
-		this.collection.add(new app.GifModel({Gif:{url: url}}));
+
+		/*var date = new Date();
+		// 2015-01-23 21:26:15
+		var time_string = date.getFullYear()+"-"+date.getMonth()
+*/
+		this.collection.add(new app.GifModel({
+			Gif:{
+				url: url,
+			}
+		}));
 
 		this.collection.last().save(/*{
 			success: function(model, response, options) {
@@ -69,18 +72,19 @@ app.GifCollectionView = Backbone.View.extend({
 		/*}*/);
 		this.renderModel(this.collection.last());
 
-		/*$('#gif_list').flexImages({
-			rowHeight: 300
-		});*/
-
-		//$('#gif_list').isotope('reloadItems');
+		iso.isotope('reloadItems');
+		iso.isotope({
+			sortBy : 'created_at',
+    		sortAscending: true
+		});
 
 		toast("Successfully added your gif.", 3000);
 	},
 
 	renderModel: function(item) {
 		this.View = new app.GifModelView({model: item, collection: this.collection});
-		iso.append(this.View.render().el).isotope( 'appended', this.View.render().el);
+
+		iso.append(this.View.render().el).isotope('appended', this.View.render().el);
 		//this.$el.prepend(this.View.render().el);
 	}
 

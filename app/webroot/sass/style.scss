@@ -224,10 +224,6 @@ ul.horizontal {
 
 	&.gallery-view {
 	
-		#gif_list {
-			height: auto !important;
-		}
-
 		.open-gallery {
 			display: none;
 		}
@@ -236,10 +232,17 @@ ul.horizontal {
 			display: inline-block;
 		}
 
+		.gif_list {
+			min-height: 400px;
+		}
+
 		.item {
 			display: none;
 			text-align: center;
-			position: relative;
+			//position: relative;
+			height: 500px;
+			width: 100%;
+			@include transition(0.5s all);
 
 			img {
 				height: 100%;
@@ -247,10 +250,11 @@ ul.horizontal {
 			}
 
 			&.active {
+				top: 0 !important;
+				left: 0 !important;
 				display: block;
-				height: 500px;
-				width: 100%;
-				@include transition(0.3s all);
+				
+				@include transition(0.5s all);
 			}
 
 			.menu {

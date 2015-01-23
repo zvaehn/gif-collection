@@ -21,14 +21,6 @@ app.GifModelView = Backbone.View.extend({
 	initialize: function(options) {
 		this.collection = options.collection;
 	},
-	
-	/*
-	we dont need this function cuz the zeroclipboard has already an click event handler
-	 */
-	/*
-	copyToClipboard: function(event) {
-		var button_id = event.target.id;
-	},*/
 
 	toggleFavorites: function(){
 		var self = this;
@@ -46,19 +38,18 @@ app.GifModelView = Backbone.View.extend({
 	},
 
 	deleteModel: function(event) {
-		
-		/*this.$el.fadeOut('slow',function(){
-			this.remove();
-		});*/
-		//this.remove();
-		
-		//toast("Successfully deleted your gif.", 1000);
-
+				
 		var collection = this;
+
+		toast("Deleted gif.", 2000);
 
 		iso.isotope('remove', $(event.target).parents('.item') ).isotope('layout');
 
-		this.$el.fadeOut('slow', 
+		collection.model.destroy();
+		collection.remove();
+		
+
+		/*this.$el.fadeOut('slow', 
 			toast(
 				'Gif deleted <a class="btn-flat yellow-text" id="gif_undo_delete" data-gif-id="'+collection.model.id+'" href="#">Undo<a>', 
 				5000,
@@ -70,7 +61,7 @@ app.GifModelView = Backbone.View.extend({
 					$('#gif_list').isotope('reloadItems');
 				}
 			)
-		);
+		);*/
 	},
 
 	restoreModel: function() {
@@ -80,8 +71,8 @@ app.GifModelView = Backbone.View.extend({
 
 	openGallery: function(event){
 		var self = this;
-		
-		this.lastModel = null;
+
+		$('html, body').animate({ scrollTop: 0 });
 
 		// Disable sort and filter panel
 		$('#gif_input_wrapper .toggle_options i').removeClass('expanded');
@@ -92,20 +83,20 @@ app.GifModelView = Backbone.View.extend({
 		$('.gif_wrapper').removeClass('list-view').addClass('gallery-view');
 
 		// Remove all inline css styles from flex-image
-		$('.gif_wrapper .item').removeAttr('style');
+		//$('.gif_wrapper .item').removeAttr('style');
 
 		// Add the .active class to our event target
 		$(event.target).parents('.item').addClass('active');
 
 		// Display and initialize the controls
-		if($(event.target).parents('.item').prevUntil(':visible').length > 0) {
+		if($(event.target).parents('.item').prevUntil().length > 0) {
 			$('.gallery-controls .left-control').fadeIn('fast');
 		}
 		else {
 			$('.gallery-controls .left-control').hide();	
 		}
 
-		if($(event.target).parents('.item').nextUntil(':visible').length > 0) {
+		if($(event.target).parents('.item').nextUntil().length > 0) {
 			$('.gallery-controls .right-control').fadeIn('fast');
 		}	
 		else {
@@ -121,11 +112,6 @@ app.GifModelView = Backbone.View.extend({
 
 		// Remove the .active class from our event target
 		$(event.target).parents('.item').removeClass('active');
-
-		// Recalculate our images with fleximages
-		/*$('#gif_list').flexImages({
-			rowHeight: 300
-		});*/
 
 		iso.isotope('reloadItems');
 
