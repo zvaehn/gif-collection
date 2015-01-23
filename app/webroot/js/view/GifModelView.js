@@ -72,7 +72,7 @@ app.GifModelView = Backbone.View.extend({
 	openGallery: function(event){
 		var self = this;
 
-		$('html, body').animate({ scrollTop: 0 });
+		$('html, body').animate({ scrollTop: 0 }, 500);
 
 		// Disable sort and filter panel
 		$('#gif_input_wrapper .toggle_options i').removeClass('expanded');
@@ -105,6 +105,7 @@ app.GifModelView = Backbone.View.extend({
 	},
 
 	closeGallery: function(event) {
+
 		$('.gif_wrapper').removeClass('gallery-view');
 		$('.gif_wrapper').addClass('list-view');
 
@@ -112,6 +113,12 @@ app.GifModelView = Backbone.View.extend({
 
 		// Remove the .active class from our event target
 		$(event.target).parents('.item').removeClass('active');
+
+		   console.log($(event.target).parents('.item').offset().top);
+
+		$('html, body').animate({
+			scrollTop: $(event.target).parents('.item').offset().top//.offset().top
+    	}, 500);
 
 		/*iso.isotope('reloadItems');
 

@@ -10,6 +10,7 @@
 				'before' => '<i class="mdi-content-mail prefix"></i>',
 				'class' => 'validate',
 				'div' => 'input-field',
+				'type' => 'text'
 			));
 		    echo $this->Form->input('password', array(
 				'before' => '<i class="mdi-communication-vpn-key prefix"></i>',

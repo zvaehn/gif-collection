@@ -200,7 +200,7 @@ ul.horizontal {
 			width: 200px;
 			position: absolute;
 
-			@include transition(0.5s all);
+			@include transition(0.3s all);
 			
 			img { 
 				width: auto; 
@@ -243,8 +243,6 @@ ul.horizontal {
 			height: 500px;
 			width: 100%;
 
-			@include transition(0.5s all);
-
 			img {
 				height: 100%;
 				width: auto;
@@ -255,7 +253,7 @@ ul.horizontal {
 				left: 0 !important;
 				display: block;
 				
-				@include transition(0.5s all);
+				@include transition(0.3s all);
 			}
 
 			.menu {
