@@ -42,7 +42,7 @@ class GifsController extends AppController {
         } 
         else {
             $status = 'error';
-            $message = $this->Gif->validationErrors;
+            $message = 'The URL seems to be invalid.';
         }
 
         echo json_encode(array(

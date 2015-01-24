@@ -47,44 +47,51 @@ app.GifCollectionView = Backbone.View.extend({
 		var url = $('#gif_input').val();
 		$('#gif_input').val('');
 
-		/*var date = new Date();
-		// 2015-01-23 21:26:15
-		var time_string = date.getFullYear()+"-"+date.getMonth()
-*/
 		this.collection.add(new app.GifModel({
 			Gif:{
 				url: url,
 			}
 		}));
 
-		this.collection.last().save(/*{
+		var _this = this;
+
+		this.collection.last().save(null, {
 			success: function(model, response, options) {
 				if(response.status == "ok") {
-					console.log(response.message);
+					toast(response.message, 2000);
+						
+					collection.last().set({ 
+						Gif: {
+							created_at: model.attributes.payload.Gif.created_at,
+							url: model.attributes.payload.Gif.url,
+							gif_id: model.attributes.payload.Gif.gif_id,
+							is_favorite: model.attributes.payload.Gif.is_favorite
+						} 
+					});
+
+					_this.prependModel(collection.last());
 				}
 				else {
-					toast('Unable to add this URL.', 3000);
+					toast(response.message, 2000);	
 				}
 			},
 			error: function(model, response, options) {
+				toast("Something went wrong!", 2000);	
 				console.log(response);	
-			}*/
-		/*}*/);
-		this.renderModel(this.collection.last());
-
-		iso.isotope('reloadItems');
-		iso.isotope({
-			sortBy : 'created_at',
-    		sortAscending: true
+			}
 		});
+	},
 
-		toast("Successfully added your gif.", 3000);
+	prependModel: function(item) {
+		this.View = new app.GifModelView({model: item, collection: this.collection});
+		iso.prepend(this.View.render().el).isotope('prepended', this.View.render().el);
 	},
 
 	renderModel: function(item) {
 		this.View = new app.GifModelView({model: item, collection: this.collection});
 
 		iso.append(this.View.render().el).isotope('appended', this.View.render().el);
+		
 		//this.$el.prepend(this.View.render().el);
 	}
 

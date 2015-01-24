@@ -201,12 +201,16 @@ ul.horizontal {
 			width: 200px;
 			position: absolute;
 
-			@include transition(0.3s all);
+			//@include transition(0.3s all);
 			
 			img { 
 				width: auto; 
 				height: 100%; 
 				outline: none;
+			}
+
+			&.active {
+				@include transition(0.3s all);
 			}
 
 			&:hover {

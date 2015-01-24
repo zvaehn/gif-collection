@@ -128,13 +128,17 @@ app.GifModelView = Backbone.View.extend({
 
 		// Remove the .active class from our event target
 		if(typeof event !== 'undefined') {
-			$(event.target).parents('.item').removeClass('active');
+
+			setTimeout(function(){
+				$(event.target).parents('.item').removeClass('active');
+      		}, 500);
 
 			$('html, body').animate({
 				scrollTop: $(event.target).parents('.item').data('offset-top')//.offset().top
 	    	}, 500);
 
 			$(event.target).parents('.item').removeData('offset-top');
+			//$(event.target).parents('.item').removeClass('active');
 		}
 	},
 
