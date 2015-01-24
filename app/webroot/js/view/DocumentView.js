@@ -25,8 +25,8 @@ app.DocumentView = Backbone.View.extend({
 		event.preventDefault();
 	},
 
+	// Toggles the gif view option panel
 	toggle_options: function(event) {
-
 		if($('#gif_input_wrapper .toggle_options').hasClass('disabled')) {
 			return;
 		}
@@ -36,6 +36,7 @@ app.DocumentView = Backbone.View.extend({
 		}
 	},
 
+	// Sorts the image collection depending on the creation date (ascending)
 	order_creationdate_asc: function() {
 		iso.isotope({
     		sortBy : 'created_at',
@@ -43,6 +44,7 @@ app.DocumentView = Backbone.View.extend({
     	});
 	},
 
+	// Sorts the image collection depending on the creation date (descending)
 	order_creationdate_desc: function() {
 		iso.isotope({
     		sortBy : 'created_at',
@@ -50,6 +52,7 @@ app.DocumentView = Backbone.View.extend({
     	});
 	},
 
+	// Filters the image collection whether favorite or not
 	filter_favorite: function(event) {
 		var _this = event.target;
 
@@ -68,10 +71,6 @@ app.DocumentView = Backbone.View.extend({
 	},
 
 	restoreModel: function(e, el) {
-		console.log(e);
-		console.log(el);
-		console.log(this);
-
 		app.GlobalEventHandler.trigger('restoreModel');
 	},
 

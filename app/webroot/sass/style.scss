@@ -1,6 +1,10 @@
 @import "compass/css3";
 @import "_materialize.scss";
 
+
+/****************************************************
+ * General styles
+ */
 body {
 	font-size: 14px;
 }
@@ -9,6 +13,24 @@ footer {
 	margin-top: 100px;
 	color: white;
 	border-top: 1px solid #888;
+}
+
+main > .container {
+	margin-top: 50px;
+}
+
+ul.horizontal {
+	padding: 0;
+	margin: 0;
+
+	li {
+		display: inline-block;
+		margin-right: 10px;
+	}
+
+	.spacer {
+		width: 30px;
+	}
 }
 
 .mdi-action-favorite-outline.toggable:hover{
@@ -35,10 +57,6 @@ footer {
 .error-message {
 	color: red;
 	margin-bottom: 15px;
-}
-
-main > .container {
-	margin-top: 50px;
 }
 
 .container.row.flashmessage {
@@ -71,20 +89,6 @@ main > .container {
 	}
 }
 
-ul.horizontal {
-	padding: 0;
-	margin: 0;
-
-	li {
-		display: inline-block;
-		margin-right: 10px;
-	}
-
-	.spacer {
-		width: 30px;
-	}
-}
-
 .toggle_options {
 	@include transform(rotate(360deg));
 	
@@ -111,6 +115,9 @@ ul.horizontal {
 	margin-bottom: 25px;
 }
 
+/****************************************************
+ * Gif View
+ */
 .gif_wrapper {
 
 	.menu {
@@ -177,6 +184,9 @@ ul.horizontal {
 		}
 	}
 
+	/******************************
+	 * Show images in a grid system
+	 */
 	&.list-view { 
 
 		.open-gallery {
@@ -221,7 +231,9 @@ ul.horizontal {
 		}
 	}
 
-
+	/*************************
+	 * Show images in gallery format
+	 */
 	&.gallery-view {
 	
 		height: 100%;

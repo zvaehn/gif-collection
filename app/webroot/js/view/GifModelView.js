@@ -11,7 +11,6 @@ app.GifModelView = Backbone.View.extend({
 	template: $('#gifTemplate').html(),  	
 	
 	events: {
-		//'click .clipboard-button': 'copyToClipboard', --> see copyToClipboard commentary
 		'click .favorite': 'toggleFavorites',
 		'click .delete': 'deleteModel',
 		'click .open-gallery': 'openGallery',
@@ -81,6 +80,7 @@ app.GifModelView = Backbone.View.extend({
 		// display on dom again
 	},
 
+	// This opens our gallery view
 	openGallery: function(event){
 		var self = this;
 
@@ -119,6 +119,7 @@ app.GifModelView = Backbone.View.extend({
 		}	
 	},
 
+	// This closes our gallery view, back to the list view
 	closeGallery: function(event) {
 
 		$('.gif_wrapper').removeClass('gallery-view');
