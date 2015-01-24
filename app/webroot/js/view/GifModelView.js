@@ -138,7 +138,6 @@ app.GifModelView = Backbone.View.extend({
 	    	}, 500);
 
 			$(event.target).parents('.item').removeData('offset-top');
-			//$(event.target).parents('.item').removeClass('active');
 		}
 	},
 

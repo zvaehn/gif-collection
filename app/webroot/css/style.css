@@ -11580,17 +11580,18 @@ ul.horizontal .spacer {
 }
 /* line 212, ../sass/style.scss */
 .gif_wrapper.list-view .item.active {
+  z-index: 99999;
   -webkit-transition: 0.3s all;
   -moz-transition: 0.3s all;
   -o-transition: 0.3s all;
   -ms-transition: 0.3s all;
   transition: 0.3s all;
 }
-/* line 217, ../sass/style.scss */
+/* line 218, ../sass/style.scss */
 .gif_wrapper.list-view .item:hover .menu {
   display: block !important;
 }
-/* line 223, ../sass/style.scss */
+/* line 224, ../sass/style.scss */
 .gif_wrapper.list-view .gallery-controls {
   display: none;
   -webkit-transition: 1s display;
@@ -11599,31 +11600,38 @@ ul.horizontal .spacer {
   -ms-transition: 1s display;
   transition: 1s display;
 }
-/* line 232, ../sass/style.scss */
+/* line 231, ../sass/style.scss */
+.gif_wrapper.gallery-view {
+  height: 100%;
+  padding-bottom: 50px;
+}
+/* line 236, ../sass/style.scss */
 .gif_wrapper.gallery-view .open-gallery {
   display: none;
 }
-/* line 236, ../sass/style.scss */
+/* line 240, ../sass/style.scss */
 .gif_wrapper.gallery-view .close-gallery {
   display: inline-block;
 }
-/* line 240, ../sass/style.scss */
+/* line 244, ../sass/style.scss */
 .gif_wrapper.gallery-view .gif_list {
   min-height: 400px;
 }
-/* line 244, ../sass/style.scss */
+/* line 248, ../sass/style.scss */
 .gif_wrapper.gallery-view .item {
   display: none;
   text-align: center;
   height: 500px;
   width: 100%;
 }
-/* line 250, ../sass/style.scss */
+/* line 254, ../sass/style.scss */
 .gif_wrapper.gallery-view .item img {
-  height: 100%;
-  width: auto;
+  height: auto;
+  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
 }
-/* line 255, ../sass/style.scss */
+/* line 261, ../sass/style.scss */
 .gif_wrapper.gallery-view .item.active {
   top: 0 !important;
   left: 0 !important;
@@ -11634,26 +11642,26 @@ ul.horizontal .spacer {
   -ms-transition: 0.3s all;
   transition: 0.3s all;
 }
-/* line 263, ../sass/style.scss */
+/* line 269, ../sass/style.scss */
 .gif_wrapper.gallery-view .item .menu {
   position: relative;
   margin-top: -6px;
   display: block !important;
 }
 @media only screen and (max-width: 600px) {
-  /* line 270, ../sass/style.scss */
+  /* line 276, ../sass/style.scss */
   .gif_wrapper.gallery-view .item.active {
     height: auto;
     width: 100%;
   }
 }
-/* line 277, ../sass/style.scss */
+/* line 283, ../sass/style.scss */
 .gif_wrapper.gallery-view .gallery-controls {
   display: block;
 }
 
 @media only screen and (max-width: 600px) {
-  /* line 283, ../sass/style.scss */
+  /* line 289, ../sass/style.scss */
   .gif_wrapper {
     padding: 0;
     margin: 0;

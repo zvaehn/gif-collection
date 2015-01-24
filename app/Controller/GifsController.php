@@ -38,7 +38,16 @@ class GifsController extends AppController {
 
         if ($this->Gif->save($this->request->data)) {
             $status = 'ok';
+
+            // ToDo: Check for duplicates
+            $duplicates = $this->Gif->findByUser_idAndUrl($this->Session->read('User.user_id'), $this->request->data['Gif']['url']);
+
+            /*if(sizeof($duplicates) > 1) {
+                $message = "Added a duplicate.";
+            }
+            else {*/
             $message = "Successfully created ur gif.";
+            
         } 
         else {
             $status = 'error';
