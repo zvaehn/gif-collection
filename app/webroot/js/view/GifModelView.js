@@ -43,10 +43,24 @@ app.GifModelView = Backbone.View.extend({
 
 		toast("Deleted gif.", 2000);
 
-		iso.isotope('remove', $(event.target).parents('.item') ).isotope('layout');
+		// Only neccessary in gallery view
+		/*if($(event.target).parents('.item').next().length > 0) {
+			console.log("next > 0");
+			$(event.target).parents('.item').next().addClass('active');
+		}
+		else if($(event.target).parents('.item').prev().length > 0) {
+			console.log("prev > 0");
+			$(event.target).parents('.item').prev().addClass('active');
+		}*/
+
+		if($('.gif_wrapper.gallery-view').length) {
+			this.closeGallery();
+		}
 
 		collection.model.destroy();
 		collection.remove();
+		
+		iso.isotope('layout');
 		
 		/*this.$el.fadeOut('slow', 
 			toast(
@@ -80,8 +94,8 @@ app.GifModelView = Backbone.View.extend({
 		// Remove the flex-image class and add gallery-view
 		$('.gif_wrapper').removeClass('list-view').addClass('gallery-view');
 
-		// Remove all inline css styles from flex-image
-		//$('.gif_wrapper .item').removeAttr('style');
+		// Remove all active classes
+		$('.item').removeClass('active');
 
 		// Add the .active class to our event target
 		$(event.target).parents('.item').addClass('active');
@@ -113,13 +127,15 @@ app.GifModelView = Backbone.View.extend({
 		$('#gif_input_wrapper .toggle_options').removeClass('disabled');
 
 		// Remove the .active class from our event target
-		$(event.target).parents('.item').removeClass('active');
+		if(typeof event !== 'undefined') {
+			$(event.target).parents('.item').removeClass('active');
 
-		$('html, body').animate({
-			scrollTop: $(event.target).parents('.item').data('offset-top')//.offset().top
-    	}, 500);
+			$('html, body').animate({
+				scrollTop: $(event.target).parents('.item').data('offset-top')//.offset().top
+	    	}, 500);
 
-		$(event.target).parents('.item').removeData('offset-top');
+			$(event.target).parents('.item').removeData('offset-top');
+		}
 	},
 
 	render: function(){
