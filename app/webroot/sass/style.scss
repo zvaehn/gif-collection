@@ -178,9 +178,6 @@ ul.horizontal {
 	}
 
 	&.list-view { 
-		/*overflow: hidden; 
-		display: table;
-		margin: 0 auto;*/
 
 		.open-gallery {
 			display: inline-block;
@@ -193,15 +190,12 @@ ul.horizontal {
 		.item { 
 			float: left; 
 			margin: 4px; 
-			//border: 1px solid #eee; 
 			box-sizing: content-box; 
 			overflow: hidden; 
 			text-align: center;
 			height: 200px;
 			width: 200px;
 			position: absolute;
-
-			//@include transition(0.3s all);
 			
 			img { 
 				width: auto; 
@@ -293,4 +287,5 @@ ul.horizontal {
 		width: 100%;
 	}
 }
+
 

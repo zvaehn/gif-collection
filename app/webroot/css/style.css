@@ -11547,21 +11547,15 @@ ul.horizontal .spacer {
 .gif_wrapper .zeroclipboard-is-hover .clipboard-icon {
   color: #2196F3;
 }
-/* line 180, ../sass/style.scss */
-.gif_wrapper.list-view {
-  /*overflow: hidden; 
-  display: table;
-  margin: 0 auto;*/
-}
-/* line 185, ../sass/style.scss */
+/* line 182, ../sass/style.scss */
 .gif_wrapper.list-view .open-gallery {
   display: inline-block;
 }
-/* line 189, ../sass/style.scss */
+/* line 186, ../sass/style.scss */
 .gif_wrapper.list-view .close-gallery {
   display: none;
 }
-/* line 193, ../sass/style.scss */
+/* line 190, ../sass/style.scss */
 .gif_wrapper.list-view .item {
   float: left;
   margin: 4px;
@@ -11572,13 +11566,13 @@ ul.horizontal .spacer {
   width: 200px;
   position: absolute;
 }
-/* line 206, ../sass/style.scss */
+/* line 200, ../sass/style.scss */
 .gif_wrapper.list-view .item img {
   width: auto;
   height: 100%;
   outline: none;
 }
-/* line 212, ../sass/style.scss */
+/* line 206, ../sass/style.scss */
 .gif_wrapper.list-view .item.active {
   z-index: 99999;
   -webkit-transition: 0.3s all;
@@ -11587,11 +11581,11 @@ ul.horizontal .spacer {
   -ms-transition: 0.3s all;
   transition: 0.3s all;
 }
-/* line 218, ../sass/style.scss */
+/* line 212, ../sass/style.scss */
 .gif_wrapper.list-view .item:hover .menu {
   display: block !important;
 }
-/* line 224, ../sass/style.scss */
+/* line 218, ../sass/style.scss */
 .gif_wrapper.list-view .gallery-controls {
   display: none;
   -webkit-transition: 1s display;
@@ -11600,38 +11594,38 @@ ul.horizontal .spacer {
   -ms-transition: 1s display;
   transition: 1s display;
 }
-/* line 231, ../sass/style.scss */
+/* line 225, ../sass/style.scss */
 .gif_wrapper.gallery-view {
   height: 100%;
   padding-bottom: 50px;
 }
-/* line 236, ../sass/style.scss */
+/* line 230, ../sass/style.scss */
 .gif_wrapper.gallery-view .open-gallery {
   display: none;
 }
-/* line 240, ../sass/style.scss */
+/* line 234, ../sass/style.scss */
 .gif_wrapper.gallery-view .close-gallery {
   display: inline-block;
 }
-/* line 244, ../sass/style.scss */
+/* line 238, ../sass/style.scss */
 .gif_wrapper.gallery-view .gif_list {
   min-height: 400px;
 }
-/* line 248, ../sass/style.scss */
+/* line 242, ../sass/style.scss */
 .gif_wrapper.gallery-view .item {
   display: none;
   text-align: center;
   height: 500px;
   width: 100%;
 }
-/* line 254, ../sass/style.scss */
+/* line 248, ../sass/style.scss */
 .gif_wrapper.gallery-view .item img {
   height: auto;
   width: 100%;
   max-width: 100%;
   max-height: 100%;
 }
-/* line 261, ../sass/style.scss */
+/* line 255, ../sass/style.scss */
 .gif_wrapper.gallery-view .item.active {
   top: 0 !important;
   left: 0 !important;
@@ -11642,26 +11636,26 @@ ul.horizontal .spacer {
   -ms-transition: 0.3s all;
   transition: 0.3s all;
 }
-/* line 269, ../sass/style.scss */
+/* line 263, ../sass/style.scss */
 .gif_wrapper.gallery-view .item .menu {
   position: relative;
   margin-top: -6px;
   display: block !important;
 }
 @media only screen and (max-width: 600px) {
-  /* line 276, ../sass/style.scss */
+  /* line 270, ../sass/style.scss */
   .gif_wrapper.gallery-view .item.active {
     height: auto;
     width: 100%;
   }
 }
-/* line 283, ../sass/style.scss */
+/* line 277, ../sass/style.scss */
 .gif_wrapper.gallery-view .gallery-controls {
   display: block;
 }
 
 @media only screen and (max-width: 600px) {
-  /* line 289, ../sass/style.scss */
+  /* line 283, ../sass/style.scss */
   .gif_wrapper {
     padding: 0;
     margin: 0;

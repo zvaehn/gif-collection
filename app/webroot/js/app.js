@@ -21,6 +21,14 @@ iso.isotope({
 
 new app.DocumentView({collection: self.collection});	 
 
+
+(function ($) {
+    $.fn.inlineStyle = function (prop) {
+        return this.prop("style")[$.camelCase(prop)];
+    };
+}(jQuery));
+
+
 $(document).ready(function(){
 	$('.parallax').parallax();
     $('.button-collapse').sideNav();
@@ -34,46 +42,67 @@ $(document).ready(function(){
     });
 
 
+    // You can break this shit if you click faster then the fadeOut()
     $('.gallery-controls .left-control').on('click', function() {
-        var _this = $('.gallery-view .active'); // our clicked element
+       
+        var _this = $('.gallery-view .active');
+        var gallery = $('.gallery-view #gif_list').children();
+        var left_control = $('.gallery-controls .left-control');
+        var right_control = $('.gallery-controls .right-control');
 
-        // Is there a prev alement?
-        if(_this.prev().length > 0) {
-            $(_this).removeClass('active');
-            $(_this).prev( ).addClass('active');    
-        }
+        $(_this).removeClass('active');
 
-        // Is there a next element?
-        if(_this.prev( ).next( ).length > 0) {
-            $('.gallery-controls .right-control').fadeIn('fast');
-        }
-        
-        // Are there 2 previous elements?
-        if(_this.prev().prev().length > 0) {
-            $(this).fadeIn('fast');
+        _this = $(_this).prev();
+        _this.addClass('active');
+
+        console.log("index: "+_this.index());
+
+        // Not First element
+        if(_this.index() > 0) {
+            left_control.fadeIn('fast');
         }
         else {
-            $(this).fadeOut('fast');
+            left_control.fadeOut('fast');
+        }
+
+        // Not Last element
+        if(_this.index() < gallery.length) {
+            right_control.fadeIn('fast');
+        }
+        else {
+            right_control.fadeOut('fast');
         }
     });
 
+    // You can break this shit if you click faster then the fadeOut()
     $('.gallery-controls .right-control').on('click', function() {
+
         var _this = $('.gallery-view .active');
+        var gallery = $('.gallery-view #gif_list').children();
+        var left_control = $('.gallery-controls .left-control');
+        var right_control = $('.gallery-controls .right-control');
 
-        if(_this.next( ).length > 0) {
-            $(_this).removeClass('active');
-            $(_this).next( ).addClass('active');
-        }
+        $(_this).removeClass('active');
 
-        if(_this.next( ).prev( ).prev().length > 0) {
-            $('.gallery-controls .left-control').fadeIn('fast');
-        }
+        _this = $(_this).next();
+        _this.addClass('active');
 
-        if(_this.next( ).next( ).next().length > 0) {
-            $(this).fadeIn('fast');
+        console.log("index: "+_this.index());
+
+        // Not First element
+        if(_this.index() > 0) {
+            left_control.fadeIn('fast');
         }
         else {
-            $(this).fadeOut('fast');
+            left_control.fadeOut('fast');
+        }
+
+        // Not Last element
+        if(_this.index()+1 < gallery.length) {
+            right_control.fadeIn('fast');
+        }
+        else {
+            right_control.fadeOut('fast');
         }
     });
 });
