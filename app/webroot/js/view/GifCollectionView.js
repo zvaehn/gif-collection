@@ -66,7 +66,8 @@ app.GifCollectionView = Backbone.View.extend({
 							url: model.attributes.payload.Gif.url,
 							gif_id: model.attributes.payload.Gif.gif_id,
 							is_favorite: model.attributes.payload.Gif.is_favorite
-						} 
+						},
+						'id': model.attributes.payload.Gif.gif_id
 					});
 
 					_this.prependModel(collection.last());
